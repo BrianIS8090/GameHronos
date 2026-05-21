@@ -1,0 +1,2263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Хроно-Метро: Петля Энтропии</title>
+  <!-- Подключение футуристичных шрифтов -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Базовые настройки темы киберпанка */
+    :root {
+      --bg-color: #050608;
+      --panel-bg: rgba(10, 14, 23, 0.85);
+      --border-glow: #00f0ff;
+      --neon-cyan: #00f0ff;
+      --neon-red: #ff0055;
+      --neon-orange: #ff9900;
+      --neon-green: #00ff66;
+      --neon-blue: #3b82f6;
+      --text-color: #e2e8f0;
+      --text-muted: #64748b;
+      --font-mono: 'Share Tech Mono', monospace;
+      --font-orbitron: 'Orbitron', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-sans);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Эффект сетки CRT развертки */
+    body::before {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), 
+                  linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
+      z-index: 9999;
+      background-size: 100% 3px, 6px 100%;
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    /* Виньетка по краям */
+    body::after {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,0.85) 100%);
+      z-index: 9998;
+      pointer-events: none;
+    }
+
+    /* Основная сетка интерфейса */
+    .app-container {
+      display: grid;
+      grid-template-rows: 70px 180px 1fr 60px;
+      height: 100vh;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      border-left: 1px solid rgba(0, 240, 255, 0.15);
+      border-right: 1px solid rgba(0, 240, 255, 0.15);
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.05);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Верхняя панель хроно-статуса */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      border-bottom: 2px solid rgba(0, 240, 255, 0.2);
+      background: var(--panel-bg);
+      backdrop-filter: blur(10px);
+    }
+
+    .chrono-title {
+      font-family: var(--font-orbitron);
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chrono-title span {
+      font-size: 0.8rem;
+      color: var(--neon-red);
+      border: 1px solid var(--neon-red);
+      padding: 2px 6px;
+      border-radius: 4px;
+      animation: pulse-red 2s infinite;
+    }
+
+    .chrono-stats {
+      display: flex;
+      gap: 40px;
+      font-family: var(--font-mono);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .stat-value {
+      font-size: 1.1rem;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
+    }
+
+    .stat-value.danger {
+      color: var(--neon-red);
+      text-shadow: 0 0 8px rgba(255, 0, 85, 0.5);
+    }
+
+    /* Схема вагона метро */
+    .train-map-container {
+      background: rgba(5, 7, 12, 0.95);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+      padding: 15px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .map-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .train-svg {
+      width: 100%;
+      height: 120px;
+      filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.15));
+    }
+
+    .svg-interactive-zone {
+      cursor: pointer;
+      pointer-events: all;
+    }
+
+    .svg-interactive-zone path, 
+    .svg-interactive-zone rect, 
+    .svg-interactive-zone circle {
+      transition: all 0.3s ease;
+      stroke-width: 1.5;
+    }
+
+    /* Состояния интерактивных зон */
+    .zone-locked {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+
+    .zone-unlocked {
+      stroke: var(--neon-cyan);
+      fill: rgba(0, 240, 255, 0.05);
+      animation: pulse-cyan-stroke 3s infinite alternate;
+    }
+    .zone-unlocked:hover {
+      stroke: var(--neon-green);
+      fill: rgba(0, 255, 102, 0.15);
+      filter: drop-shadow(0 0 5px var(--neon-green));
+    }
+
+    /* Средняя секция: Повествование + Архив */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      background: rgba(10, 14, 23, 0.5);
+      min-height: 0;
+    }
+
+    /* Экран повествования */
+    .narrative-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      border-right: 1px solid rgba(0, 240, 255, 0.15);
+      min-height: 0;
+      justify-content: space-between;
+    }
+
+    .narrative-scroll-area {
+      overflow-y: auto;
+      flex-grow: 1;
+      padding-right: 15px;
+      margin-bottom: 25px;
+    }
+
+    .narrative-scroll-area::-webkit-scrollbar {
+      width: 4px;
+    }
+    .narrative-scroll-area::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .narrative-scroll-area::-webkit-scrollbar-thumb {
+      background: rgba(0, 240, 255, 0.3);
+      border-radius: 2px;
+    }
+    .narrative-scroll-area::-webkit-scrollbar-thumb:hover {
+      background: var(--neon-cyan);
+    }
+
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-color);
+      text-shadow: 0 0 1px rgba(226, 232, 240, 0.8);
+      font-weight: 300;
+      white-space: pre-wrap;
+    }
+
+    .story-text p {
+      margin-bottom: 20px;
+    }
+
+    .story-text em {
+      color: var(--neon-orange);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .story-text strong {
+      color: var(--neon-cyan);
+      font-weight: 600;
+    }
+
+    .story-text .glitch-text {
+      font-family: var(--font-mono);
+      color: var(--neon-red);
+      font-weight: bold;
+    }
+
+    /* Кнопки вариантов выбора */
+    .choices-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .choice-btn {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      color: var(--text-color);
+      padding: 16px 24px;
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 400;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .choice-btn::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 3px; height: 100%;
+      background: var(--neon-cyan);
+      opacity: 0.5;
+    }
+
+    .choice-btn:hover {
+      background: rgba(0, 240, 255, 0.08);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+      transform: translateX(4px);
+    }
+
+    .choice-btn:hover::before {
+      opacity: 1;
+      box-shadow: 0 0 8px var(--neon-cyan);
+    }
+
+    .choice-btn:active {
+      transform: translateX(1px);
+    }
+
+    .choice-index {
+      font-family: var(--font-mono);
+      color: var(--neon-cyan);
+      font-weight: bold;
+      border: 1px solid rgba(0, 240, 255, 0.4);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    .choice-btn.replaced {
+      border-color: rgba(0, 255, 102, 0.4);
+    }
+    .choice-btn.replaced::before {
+      background: var(--neon-green);
+    }
+    .choice-btn.replaced .choice-index {
+      color: var(--neon-green);
+      border-color: rgba(0, 255, 102, 0.5);
+    }
+    .choice-btn.replaced:hover {
+      background: rgba(0, 255, 102, 0.08);
+      border-color: var(--neon-green);
+      box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
+    }
+
+    /* Боковая панель Хроно-Архива */
+    .archive-panel {
+      border-left: 1px solid rgba(0, 240, 255, 0.15);
+      background: rgba(6, 9, 15, 0.95);
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .archive-header {
+      font-family: var(--font-orbitron);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--neon-cyan);
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .archive-scroll {
+      overflow-y: auto;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .archive-scroll::-webkit-scrollbar {
+      width: 3px;
+    }
+    .archive-scroll::-webkit-scrollbar-thumb {
+      background: rgba(0, 240, 255, 0.15);
+    }
+
+    .memory-card {
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid rgba(226, 232, 240, 0.05);
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .memory-card.locked {
+      color: var(--text-muted);
+      border-style: dashed;
+      text-align: center;
+      padding: 20px 15px;
+    }
+
+    .memory-card.unlocked {
+      border-color: rgba(0, 240, 255, 0.2);
+      box-shadow: 0 2px 8px rgba(0, 240, 255, 0.02);
+    }
+
+    .memory-card.unlocked::before {
+      content: "";
+      position: absolute;
+      top: 0; right: 0;
+      width: 6px; height: 6px;
+      background: var(--neon-cyan);
+      border-radius: 50%;
+      margin: 10px;
+      box-shadow: 0 0 6px var(--neon-cyan);
+    }
+
+    .memory-title {
+      font-family: var(--font-mono);
+      color: var(--neon-cyan);
+      font-weight: bold;
+      margin-bottom: 6px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .memory-desc {
+      line-height: 1.4;
+      color: #cbd5e1;
+      font-size: 0.78rem;
+    }
+
+    /* Всплывающее уведомление о новой улике */
+    .alert-banner {
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      background: rgba(10, 14, 23, 0.98);
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+      padding: 20px 40px;
+      border-radius: 8px;
+      z-index: 5000;
+      text-align: center;
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .alert-banner.active {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+
+    .alert-title {
+      font-family: var(--font-orbitron);
+      color: var(--neon-cyan);
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      letter-spacing: 2px;
+    }
+
+    .alert-message {
+      font-family: var(--font-mono);
+      color: #cbd5e1;
+      font-size: 0.9rem;
+    }
+
+    /* Подвал */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      border-top: 1px solid rgba(0, 240, 255, 0.15);
+      background: var(--panel-bg);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+
+    .footer-left {
+      color: var(--text-muted);
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-btn {
+      background: transparent;
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--neon-cyan);
+      padding: 4px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      transition: all 0.2s ease;
+    }
+
+    .footer-btn:hover {
+      background: rgba(0, 240, 255, 0.1);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
+    }
+
+    .footer-btn.danger {
+      color: var(--neon-red);
+      border-color: rgba(255, 0, 85, 0.3);
+    }
+    .footer-btn.danger:hover {
+      background: rgba(255, 0, 85, 0.1);
+      border-color: var(--neon-red);
+      box-shadow: 0 0 8px rgba(255, 0, 85, 0.2);
+    }
+
+    .footer-btn.success {
+      color: var(--neon-green);
+      border-color: rgba(0, 255, 102, 0.3);
+    }
+    .footer-btn.success:hover {
+      background: rgba(0, 255, 102, 0.1);
+      border-color: var(--neon-green);
+      box-shadow: 0 0 8px rgba(0, 255, 102, 0.2);
+    }
+
+    /* Модальное окно */
+    .modal-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(5, 6, 8, 0.85);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: rgba(10, 14, 23, 0.98);
+      border: 1px solid var(--neon-cyan);
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+      width: 90%;
+      max-width: 500px;
+      padding: 30px;
+      border-radius: 8px;
+      position: relative;
+      transform: scale(0.9);
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      font-family: var(--font-orbitron);
+      color: var(--neon-cyan);
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+      padding-bottom: 10px;
+    }
+
+    .modal-body {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    .modal-body strong {
+      color: var(--neon-cyan);
+    }
+
+    .modal-close-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      padding: 10px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .modal-close-btn:hover {
+      background: rgba(0, 240, 255, 0.1);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+    }
+
+    /* Стартовый экран */
+    .sync-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--bg-color);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 1s ease;
+    }
+
+    .sync-box {
+      text-align: center;
+      max-width: 600px;
+      padding: 40px;
+      border: 1px solid rgba(0, 240, 255, 0.15);
+      border-radius: 8px;
+      background: rgba(10, 14, 23, 0.8);
+      box-shadow: 0 0 50px rgba(0, 240, 255, 0.05);
+    }
+
+    .sync-title {
+      font-family: var(--font-orbitron);
+      color: var(--neon-cyan);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      letter-spacing: 3px;
+      text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    }
+
+    .sync-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .sync-btn {
+      background: transparent;
+      border: 1px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      padding: 16px 40px;
+      font-family: var(--font-orbitron);
+      font-size: 1.1rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+      animation: pulse-border 2s infinite;
+    }
+
+    .sync-btn:hover {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+      transform: scale(1.02);
+    }
+
+    .glitch-flash {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--neon-red);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10001;
+      transition: opacity 0.1s ease;
+    }
+
+    .glitching {
+      animation: screen-glitch 0.2s 3;
+    }
+
+    /* Панель автотестов */
+    .test-panel {
+      position: absolute;
+      top: 80px;
+      right: 30px;
+      width: 320px;
+      background: rgba(10, 14, 23, 0.98);
+      border: 1px solid var(--neon-green);
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
+      border-radius: 6px;
+      z-index: 950;
+      display: none;
+      flex-direction: column;
+      max-height: 450px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    .test-panel.active {
+      display: flex;
+    }
+
+    .test-header {
+      padding: 10px 15px;
+      border-bottom: 1px solid rgba(0, 255, 102, 0.2);
+      color: var(--neon-green);
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .test-log {
+      padding: 15px;
+      overflow-y: auto;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      color: #a7f3d0;
+    }
+
+    .test-log-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      padding-bottom: 2px;
+    }
+
+    .test-log-item.success {
+      color: var(--neon-green);
+    }
+    .test-log-item.fail {
+      color: var(--neon-red);
+    }
+
+    .test-controls {
+      padding: 10px 15px;
+      border-top: 1px solid rgba(0, 255, 102, 0.2);
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Анимации */
+    @keyframes pulse-border {
+      0% { box-shadow: 0 0 10px rgba(0, 240, 255, 0.1); border-color: rgba(0, 240, 255, 0.4); }
+      50% { box-shadow: 0 0 25px rgba(0, 240, 255, 0.3); border-color: rgba(0, 240, 255, 1); }
+      100% { box-shadow: 0 0 10px rgba(0, 240, 255, 0.1); border-color: rgba(0, 240, 255, 0.4); }
+    }
+
+    @keyframes pulse-cyan-stroke {
+      0% { stroke: rgba(0, 240, 255, 0.4); filter: drop-shadow(0 0 2px rgba(0, 240, 255, 0.2)); }
+      100% { stroke: rgba(0, 240, 255, 1); filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6)); }
+    }
+
+    @keyframes pulse-red {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    @keyframes screen-glitch {
+      0% { transform: translate(0, 0) skew(0deg); filter: hue-rotate(0deg); }
+      20% { transform: translate(-3px, 2px) skew(-2deg); filter: hue-rotate(90deg); }
+      40% { transform: translate(2px, -2px) skew(2deg); filter: hue-rotate(180deg); }
+      60% { transform: translate(-1px, 1px) skew(-1deg); filter: hue-rotate(270deg); }
+      80% { transform: translate(3px, -1px) skew(3deg); filter: hue-rotate(360deg); }
+      100% { transform: translate(0, 0) skew(0deg); filter: hue-rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Стартовый экран инициализации аудио и сессии -->
+  <div id="sync-overlay" class="sync-overlay">
+    <div class="sync-box">
+      <div class="sync-title">ХРОНО-МЕТРО</div>
+      <div class="sync-subtitle">
+        СИСТЕМА ВРЕМЕННОЙ СИНХРОНИЗАЦИИ АКТИВИРОВАНА.<br>
+        ОБНАРУЖЕНА ЛОКАЛЬНАЯ ВРЕМЕННАЯ АНОМАЛИЯ КЛАССА «ПЕТЛЯ».<br>
+        НАЖМИТЕ ДЛЯ СИНХРОНИЗАЦИИ СОЗНАНИЯ И ПОДКЛЮЧЕНИЯ НЕЙРО-АРХИВА.
+      </div>
+      <button id="sync-btn" class="sync-btn">СИНХРОНИЗИРОВАТЬ</button>
+    </div>
+  </div>
+
+  <!-- Оповещение об обновлении нейро-архива -->
+  <div id="alert-banner" class="alert-banner">
+    <div class="alert-title">!! НЕЙРО-АРХИВ ОБНОВЛЕН !!</div>
+    <div id="alert-message" class="alert-message">Записано новое воспоминание: ...</div>
+  </div>
+
+  <!-- Экран вспышки при гибели -->
+  <div id="glitch-flash" class="glitch-flash"></div>
+
+  <!-- Основной контейнер игры -->
+  <div class="app-container">
+    
+    <!-- Шапка со статистикой временной петли -->
+    <header>
+      <div class="chrono-title">
+        CHRONOS-OS V4.12 <span>ПЕТЛЯ ОБНАРУЖЕНА</span>
+      </div>
+      <div class="chrono-stats">
+        <div class="stat-item">
+          <span class="stat-label">Временной цикл</span>
+          <span id="loop-counter" class="stat-value">01</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Стабильность петли</span>
+          <span id="entropy-value" class="stat-value">0.0%</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Время до коллапса</span>
+          <span id="chrono-timer" class="stat-value danger">03:00.000</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Схема вагона метро (Blueprint) -->
+    <section class="train-map-container">
+      <div class="map-title">
+        <span>ИНТЕРАКТИВНАЯ НЕЙРО-СХЕМА СОСТАВА // 81-717 «НОМЕРНОЙ»</span>
+        <span id="map-hint" style="color: var(--neon-cyan);">Кликните на подсвеченную зону для хроно-анализа</span>
+      </div>
+      
+      <!-- SVG-чертеж вагона метро -->
+      <svg class="train-svg" viewBox="0 0 1000 120" xmlns="http://www.w3.org/2000/svg">
+        <!-- Рельсы и пути -->
+        <line x1="0" y1="110" x2="1000" y2="110" stroke="#1e293b" stroke-width="3" />
+        <line x1="0" y1="114" x2="1000" y2="114" stroke="#0f172a" stroke-width="1" />
+        
+        <!-- Контур вагона -->
+        <rect x="50" y="20" width="900" height="80" rx="15" fill="#0b0f19" stroke="#1e293b" stroke-width="2.5" />
+        <line x1="50" y1="65" x2="950" y2="65" stroke="#1e293b" stroke-width="1" stroke-dasharray="5,5" />
+        
+        <!-- Колесные пары -->
+        <circle cx="200" cy="105" r="10" fill="#020617" stroke="#1e293b" stroke-width="2" />
+        <circle cx="230" cy="105" r="10" fill="#020617" stroke="#1e293b" stroke-width="2" />
+        <circle cx="770" cy="105" r="10" fill="#020617" stroke="#1e293b" stroke-width="2" />
+        <circle cx="800" cy="105" r="10" fill="#020617" stroke="#1e293b" stroke-width="2" />
+        
+        <!-- Окна вагона -->
+        <rect x="180" y="30" width="80" height="25" rx="3" fill="#020617" stroke="#1e293b" stroke-width="1.5" />
+        <rect x="300" y="30" width="80" height="25" rx="3" fill="#020617" stroke="#1e293b" stroke-width="1.5" />
+        <rect x="420" y="30" width="80" height="25" rx="3" fill="#020617" stroke="#1e293b" stroke-width="1.5" />
+        <rect x="540" y="30" width="80" height="25" rx="3" fill="#020617" stroke="#1e293b" stroke-width="1.5" />
+        <rect x="660" y="30" width="80" height="25" rx="3" fill="#020617" stroke="#1e293b" stroke-width="1.5" />
+        <rect x="780" y="30" width="80" height="25" rx="3" fill="#020617" stroke="#1e293b" stroke-width="1.5" />
+
+        <!-- Двери вагона (межвагонные переходы) -->
+        <rect x="50" y="30" width="10" height="60" fill="#020617" stroke="#1e293b" stroke-width="1.5" />
+        <rect x="940" y="30" width="10" height="60" fill="#020617" stroke="#1e293b" stroke-width="1.5" />
+        
+        <!-- Интерактивная зона 1: Кабина машиниста (левая часть вагона) -->
+        <g id="zone-cabin" class="svg-interactive-zone zone-locked" onclick="app.analyzeZone('cabin')">
+          <rect x="60" y="22" width="70" height="76" rx="5" />
+          <text x="95" y="62" font-family="Share Tech Mono" font-size="10" text-anchor="middle" fill="currentColor">КАБИНА</text>
+        </g>
+
+        <!-- Интерактивная зона 2: Электрощиток в тамбуре -->
+        <g id="zone-shield" class="svg-interactive-zone zone-locked" onclick="app.analyzeZone('shield')">
+          <rect x="140" y="25" width="25" height="40" rx="2" />
+          <path d="M152.5 30 L152.5 60 M145 45 L160 45" stroke-width="1" />
+          <text x="152" y="77" font-family="Share Tech Mono" font-size="7" text-anchor="middle" fill="currentColor">ЩИТОК</text>
+        </g>
+
+        <!-- Интерактивная зона 3: Рюкзак под сиденьем №4 -->
+        <g id="zone-bomb" class="svg-interactive-zone zone-locked" onclick="app.analyzeZone('bomb')">
+          <rect x="325" y="78" width="30" height="18" rx="3" />
+          <circle cx="340" cy="87" r="4" />
+          <text x="340" y="73" font-family="Share Tech Mono" font-size="7" text-anchor="middle" fill="currentColor">РЮКЗАК</text>
+        </g>
+
+        <!-- Интерактивная зона 4: Подозрительный пассажир (террорист) -->
+        <g id="zone-terrorist" class="svg-interactive-zone zone-locked" onclick="app.analyzeZone('terrorist')">
+          <circle cx="460" cy="45" r="10" />
+          <path d="M445 75 C445 55, 475 55, 475 75 Z" />
+          <text x="460" y="87" font-family="Share Tech Mono" font-size="7" text-anchor="middle" fill="currentColor">ПАССАЖИР</text>
+        </g>
+
+        <!-- Интерактивная зона 5: Угрюмый военный -->
+        <g id="zone-soldier" class="svg-interactive-zone zone-locked" onclick="app.analyzeZone('soldier')">
+          <circle cx="580" cy="45" r="10" />
+          <path d="M565 75 C565 55, 595 55, 595 75 Z" />
+          <text x="580" y="87" font-family="Share Tech Mono" font-size="7" text-anchor="middle" fill="currentColor">ВОЕННЫЙ</text>
+        </g>
+
+        <!-- Интерактивная зона 6: Люк техобслуживания тормозов -->
+        <g id="zone-hatch" class="svg-interactive-zone zone-locked" onclick="app.analyzeZone('hatch')">
+          <rect x="680" y="85" width="80" height="12" rx="1" />
+          <text x="720" y="80" font-family="Share Tech Mono" font-size="7" text-anchor="middle" fill="currentColor">СЕРВИСНЫЙ ЛЮК</text>
+        </g>
+
+        <!-- Интерактивная зона 7: Стоп-кран -->
+        <g id="zone-brake" class="svg-interactive-zone zone-locked" onclick="app.analyzeZone('brake')">
+          <rect x="880" y="25" width="15" height="25" rx="2" />
+          <line x1="887.5" y1="30" x2="887.5" y2="45" stroke-width="2" />
+          <text x="887.5" y="60" font-family="Share Tech Mono" font-size="7" text-anchor="middle" fill="currentColor">ТОРМОЗ</text>
+        </g>
+      </svg>
+    </section>
+
+    <!-- Основная сетка игры -->
+    <div class="main-grid">
+      
+      <!-- Панель текстового повествования -->
+      <section class="narrative-panel">
+        <div class="narrative-scroll-area">
+          <div id="story-display" class="story-text">
+            <!-- Сюжетный текст -->
+          </div>
+        </div>
+
+        <div id="choices-display" class="choices-container">
+          <!-- Кнопки выбора -->
+        </div>
+      </section>
+
+      <!-- Архив Хроно-Улик -->
+      <aside class="archive-panel">
+        <div class="archive-header">
+          <span>ХРОНО-АРХИВ УЛИК</span>
+          <span style="font-size: 0.7rem; color: var(--text-muted);">OS: ACTIVE</span>
+        </div>
+        <div id="archive-display" class="archive-scroll">
+          <!-- Улики -->
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Подвал с элементами управления -->
+    <footer>
+      <div class="footer-left">
+        <span>Статус квантовой синхронизации: <strong style="color: var(--neon-green);">СТАБИЛЬНО</strong></span>
+        <span>|</span>
+        <span id="tests-count">Пройдено уникальных путей: 0/27</span>
+      </div>
+      <div class="footer-right">
+        <button id="toggle-tests-btn" class="footer-btn success" onclick="app.toggleTestPanel()">Авто-тестирование</button>
+        <button class="footer-btn danger" onclick="app.initiateChronoCollapse()">Сбросить память</button>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Модальное окно Хроно-Анализатора -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal-box">
+      <div id="modal-header" class="modal-header">
+        ХРОНО-АНАЛИЗАТОР // ДАННЫЕ УЛИКИ
+      </div>
+      <div id="modal-body" class="modal-body">
+        Детализированная улика.
+      </div>
+      <button class="modal-close-btn" onclick="app.closeModal()">ЗАКРЫТЬ ТЕРМИНАЛ</button>
+    </div>
+  </div>
+
+  <!-- Панель авто-тестирования -->
+  <div id="test-panel" class="test-panel">
+    <div class="test-header">
+      <span>ИНСТРУМЕНТ АВТО-ТЕСТИРОВАНИЯ</span>
+      <button class="footer-btn danger" onclick="app.toggleTestPanel()" style="padding: 1px 6px;">X</button>
+    </div>
+    <div id="test-log" class="test-log">
+      <!-- Результаты тестов -->
+    </div>
+    <div class="test-controls">
+      <button id="run-tests-btn" class="footer-btn success" style="flex-grow: 1;" onclick="app.runAllPathsTest()">Запустить тест 27 путей</button>
+    </div>
+  </div>
+
+  <!-- Логическая часть игры -->
+  <script>
+    // Класс аудиосинтезатора на базе Web Audio API
+    class ChronoAudio {
+      constructor() {
+        this.ctx = null;
+        this.trainOsc = null;
+        this.trainGain = null;
+        this.rumbleFilter = null;
+        this.isMuted = false;
+        this.isInitialized = false;
+      }
+
+      init() {
+        if (this.isInitialized) return;
+        try {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+          this.isInitialized = true;
+          this.startTrainRumble();
+        } catch (e) {
+          console.warn("Web Audio API не поддерживается", e);
+        }
+      }
+
+      startTrainRumble() {
+        if (!this.isInitialized || this.isMuted) return;
+
+        this.trainOsc = this.ctx.createOscillator();
+        this.trainOsc.type = 'sawtooth';
+        this.trainOsc.frequency.setValueAtTime(45, this.ctx.currentTime);
+
+        this.rumbleFilter = this.ctx.createBiquadFilter();
+        this.rumbleFilter.type = 'lowpass';
+        this.rumbleFilter.frequency.setValueAtTime(90, this.ctx.currentTime);
+
+        this.trainGain = this.ctx.createGain();
+        this.trainGain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+
+        this.trainOsc.connect(this.rumbleFilter);
+        this.rumbleFilter.connect(this.trainGain);
+        this.trainGain.connect(this.ctx.destination);
+
+        this.trainOsc.start();
+
+        this.wheelClackInterval = setInterval(() => {
+          this.playWheelClack();
+        }, 3200);
+      }
+
+      playWheelClack() {
+        if (!this.isInitialized || this.isMuted || this.ctx.state === 'suspended') return;
+        
+        const now = this.ctx.currentTime;
+        
+        const osc1 = this.ctx.createOscillator();
+        const gain1 = this.ctx.createGain();
+        const filter1 = this.ctx.createBiquadFilter();
+
+        osc1.type = 'triangle';
+        osc1.frequency.setValueAtTime(80, now);
+        
+        filter1.type = 'lowpass';
+        filter1.frequency.setValueAtTime(150, now);
+
+        gain1.gain.setValueAtTime(0.08, now);
+        gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+
+        osc1.connect(filter1);
+        filter1.connect(gain1);
+        gain1.connect(this.ctx.destination);
+        
+        osc1.start(now);
+        osc1.stop(now + 0.15);
+
+        const osc2 = this.ctx.createOscillator();
+        const gain2 = this.ctx.createGain();
+        const filter2 = this.ctx.createBiquadFilter();
+
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(75, now + 0.2);
+        
+        filter2.type = 'lowpass';
+        filter2.frequency.setValueAtTime(130, now + 0.2);
+
+        gain2.gain.setValueAtTime(0.06, now + 0.2);
+        gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+        osc2.connect(filter2);
+        filter2.connect(gain2);
+        gain2.connect(this.ctx.destination);
+        
+        osc2.start(now + 0.2);
+        osc2.stop(now + 0.35);
+      }
+
+      playTextClick() {
+        if (!this.isInitialized || this.isMuted || this.ctx.state === 'suspended') return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        
+        osc.type = 'sine';
+        const freq = 1200 + Math.random() * 800;
+        osc.frequency.setValueAtTime(freq, now);
+
+        gain.gain.setValueAtTime(0.003, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.03);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.03);
+      }
+
+      playGlitch() {
+        if (!this.isInitialized || this.isMuted || this.ctx.state === 'suspended') return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(100, now);
+        osc.frequency.linearRampToValueAtTime(800, now + 0.15);
+
+        gain.gain.setValueAtTime(0.015, now);
+        gain.gain.linearRampToValueAtTime(0.0001, now + 0.15);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.15);
+      }
+
+      playExplosion() {
+        if (!this.isInitialized || this.isMuted) return;
+        const now = this.ctx.currentTime;
+
+        const bufferSize = this.ctx.sampleRate * 2.0;
+        const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          output[i] = Math.random() * 2 - 1;
+        }
+
+        const whiteNoise = this.ctx.createBufferSource();
+        whiteNoise.buffer = noiseBuffer;
+
+        const explosionFilter = this.ctx.createBiquadFilter();
+        explosionFilter.type = 'lowpass';
+        explosionFilter.frequency.setValueAtTime(300, now);
+        explosionFilter.frequency.exponentialRampToValueAtTime(10, now + 1.8);
+
+        const explosionGain = this.ctx.createGain();
+        explosionGain.gain.setValueAtTime(0.4, now);
+        explosionGain.gain.exponentialRampToValueAtTime(0.001, now + 1.8);
+
+        whiteNoise.connect(explosionFilter);
+        explosionFilter.connect(explosionGain);
+        explosionGain.connect(this.ctx.destination);
+
+        whiteNoise.start(now);
+        whiteNoise.stop(now + 2.0);
+
+        setTimeout(() => {
+          const shiftNow = this.ctx.currentTime;
+          const shiftOsc = this.ctx.createOscillator();
+          const shiftGain = this.ctx.createGain();
+
+          shiftOsc.type = 'sine';
+          shiftOsc.frequency.setValueAtTime(80, shiftNow);
+          shiftOsc.frequency.exponentialRampToValueAtTime(3000, shiftNow + 1.2);
+
+          shiftGain.gain.setValueAtTime(0.001, shiftNow);
+          shiftGain.gain.exponentialRampToValueAtTime(0.08, shiftNow + 0.8);
+          shiftGain.gain.exponentialRampToValueAtTime(0.001, shiftNow + 1.2);
+
+          shiftOsc.connect(shiftGain);
+          shiftGain.connect(this.ctx.destination);
+
+          shiftOsc.start(shiftNow);
+          shiftOsc.stop(shiftNow + 1.3);
+        }, 1100);
+      }
+
+      playTimerBeep() {
+        if (!this.isInitialized || this.isMuted || this.ctx.state === 'suspended') return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(2000, now);
+
+        gain.gain.setValueAtTime(0.02, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.12);
+      }
+    }
+
+    // Класс логики игры «Хроно-Метро»
+    class ChronoMetro {
+      constructor() {
+        // Улики, сохраняемые между петлями
+        this.memories = {
+          bomb_found: false,      // Улика 1: Красный рюкзак под сиденьем №4
+          terrorist_know: false,  // Улика 2: Личность террориста в капюшоне
+          generator_key: false,   // Улика 3: Трехгранный ключ монтера
+          brake_broken: false,    // Улика 4: Саботаж тормозного шланга в люке
+          cabin_code: false,      // Улика 5: Пароль от двери кабины (8421)
+          soldier_trust: false,   // Улика 6: Доверие военного Алексея из ССО
+          yellow_wire: false      // Улика 7: Желтый провод бомбы
+        };
+
+        // Названия улик для баннеров и Хроно-Архива
+        this.memoryMeta = {
+          bomb_found: { title: "СВУ под сиденьем №4", desc: "Под сиденьем №4 заложен тяжелый красный рюкзак с бомбой. Таймер запущен." },
+          terrorist_know: { title: "Личность террориста", desc: "Парень в черном капюшоне координирует взрыв с помощью радио-передатчика." },
+          generator_key: { title: "Трехгранный ключ", desc: "У спящего монтера в Сцене 1 в кармане торчит трехгранный ключ от щитков." },
+          brake_broken: { title: "Саботаж тормозов", desc: "Тормозной шланг в инспекционном люке подрезан. Обычный стоп-кран бесполезен!" },
+          cabin_code: { title: "Код кабины: 8421", desc: "Служебный пароль от кабины машиниста найден в бортовых системах." },
+          soldier_trust: { title: "Доверие Алексея", desc: "Молчаливого спецназовца зовут Алексей (майор ССО). Назовите его по имени." },
+          yellow_wire: { title: "Желтый провод", desc: "Красный и синий провода детонируют заряд сразу. Безопасен только ЖЕЛТЫЙ провод." }
+        };
+
+        // Состояние текущего цикла
+        this.state = {
+          loop: 1,
+          entropy: 0.0,
+          currentScene: 1,
+          pathHistory: [],        // Массив индексов выборов
+          timeRemaining: 180000,  // 3 минуты в миллисекундах
+          isGameOver: false,
+          openedPaths: new Set()  // Набор уникальных пройденных комбинаций
+        };
+
+        this.audio = new ChronoAudio();
+        this.timerInterval = null;
+        this.typewriterTimeout = null;
+        this.lastBeepSec = -1;
+      }
+
+      init() {
+        this.loadProgress();
+        this.renderArchive();
+        this.updateStats();
+        this.startLoop();
+      }
+
+      loadProgress() {
+        const savedMemories = localStorage.getItem('chrono_memories_v2');
+        const savedOpenedPaths = localStorage.getItem('chrono_opened_paths_v2');
+        const savedLoop = localStorage.getItem('chrono_loop_v2');
+
+        if (savedMemories) {
+          this.memories = JSON.parse(savedMemories);
+        }
+        if (savedOpenedPaths) {
+          this.state.openedPaths = new Set(JSON.parse(savedOpenedPaths));
+        }
+        if (savedLoop) {
+          this.state.loop = parseInt(savedLoop, 10);
+        }
+        this.calculateEntropy();
+      }
+
+      saveProgress() {
+        localStorage.setItem('chrono_memories_v2', JSON.stringify(this.memories));
+        localStorage.setItem('chrono_opened_paths_v2', JSON.stringify(Array.from(this.state.openedPaths)));
+        localStorage.setItem('chrono_loop_v2', this.state.loop.toString());
+      }
+
+      calculateEntropy() {
+        this.state.entropy = Math.min((this.state.openedPaths.size / 27) * 100, 99.9);
+      }
+
+      startLoop() {
+        this.state.currentScene = 1;
+        this.state.pathHistory = [];
+        this.state.timeRemaining = 180000;
+        this.state.isGameOver = false;
+
+        this.updateStats();
+        this.updateInteractiveZones();
+        this.renderScene();
+
+        // Запуск таймера
+        if (this.timerInterval) clearInterval(this.timerInterval);
+        const startTime = Date.now();
+        const initialRemaining = this.state.timeRemaining;
+
+        this.timerInterval = setInterval(() => {
+          if (this.state.isGameOver) {
+            clearInterval(this.timerInterval);
+            return;
+          }
+          const elapsed = Date.now() - startTime;
+          this.state.timeRemaining = Math.max(initialRemaining - elapsed, 0);
+
+          this.updateTimerDisplay();
+
+          if (this.state.timeRemaining <= 0) {
+            clearInterval(this.timerInterval);
+            this.handleTimeout();
+          }
+        }, 33);
+      }
+
+      updateTimerDisplay() {
+        const timerEl = document.getElementById('chrono-timer');
+        const totalMs = this.state.timeRemaining;
+        const mins = Math.floor(totalMs / 60000);
+        const secs = Math.floor((totalMs % 60000) / 1000);
+        const ms = Math.floor(totalMs % 1000);
+
+        const format = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}.${ms.toString().padStart(3, '0')}`;
+        timerEl.textContent = format;
+
+        if (totalMs < 30000 && secs !== this.lastBeepSec) {
+          this.lastBeepSec = secs;
+          this.audio.playTimerBeep();
+          timerEl.style.textShadow = '0 0 15px #ff0055';
+          setTimeout(() => {
+            timerEl.style.textShadow = 'none';
+          }, 200);
+        }
+      }
+
+      handleTimeout() {
+        this.state.isGameOver = true;
+        this.triggerRestart(
+          "ВРЕМЯ ИСТЕКЛО. Грозное тиканье под сиденьем сливается со свистом тормозов. Я не успел. Ослепительная багровая вспышка разрывает обшивку вагона. Моя плоть мгновенно обращается в пепел. Ударная волна сминает металл, погружая туннель в первозданный хаос..."
+        );
+      }
+
+      updateStats() {
+        document.getElementById('loop-counter').textContent = this.state.loop.toString().padStart(2, '0');
+        this.calculateEntropy();
+        document.getElementById('entropy-value').textContent = `${this.state.entropy.toFixed(1)}%`;
+        document.getElementById('tests-count').textContent = `Пройдено уникальных путей: ${this.state.openedPaths.size}/27`;
+      }
+
+      updateInteractiveZones() {
+        const zones = {
+          bomb: { el: document.getElementById('zone-bomb'), key: 'bomb_found' },
+          cabin: { el: document.getElementById('zone-cabin'), key: 'cabin_code' },
+          shield: { el: document.getElementById('zone-shield'), key: 'generator_key' },
+          terrorist: { el: document.getElementById('zone-terrorist'), key: 'terrorist_know' },
+          soldier: { el: document.getElementById('zone-soldier'), key: 'soldier_trust' },
+          hatch: { el: document.getElementById('zone-hatch'), key: 'brake_broken' },
+          brake: { el: document.getElementById('zone-brake'), key: 'brake_broken' }
+        };
+
+        for (const [id, zone] of Object.entries(zones)) {
+          if (zone.el) {
+            zone.el.className.baseVal = "svg-interactive-zone " + 
+              (this.memories[zone.key] ? "zone-unlocked" : "zone-locked");
+          }
+        }
+
+        if (this.state.currentScene === 3) {
+          return this.getScene3Text();
+        }
+
+        return "ОШИБКА ХРОНОЛОГИИ.";
+      }
+
+      // Вывод красивого неонового оповещения при открытии улики
+      unlockMemory(key) {
+        if (this.memories[key]) return; // Уже открыта
+
+        this.memories[key] = true;
+        this.saveProgress();
+        this.updateInteractiveZones();
+        this.renderArchive();
+
+        const banner = document.getElementById('alert-banner');
+        const msg = document.getElementById('alert-message');
+        const meta = this.memoryMeta[key];
+
+        msg.innerHTML = `Записано квантовое воспоминание:<br><strong>«${meta.title}»</strong>`;
+        banner.classList.add('active');
+        this.audio.playGlitch();
+
+        setTimeout(() => {
+          banner.classList.remove('active');
+        }, 3500);
+      }
+      analyzeZone(zoneId) {
+        const zoneKeys = {
+          bomb: 'bomb_found',
+          cabin: 'cabin_code',
+          shield: 'generator_key',
+          terrorist: 'terrorist_know',
+          soldier: 'soldier_trust',
+          hatch: 'brake_broken',
+          brake: 'brake_broken'
+        };
+        const key = zoneKeys[zoneId];
+        if (key && !this.memories[key]) {
+          return; // Объект заблокирован, клик игнорируется
+        }
+
+        const modal = document.getElementById('modal-overlay');
+        const header = document.getElementById('modal-header');
+        const body = document.getElementById('modal-body');
+
+        let title = "";
+        let content = "";
+        let isUnlocked = false;
+
+        switch (zoneId) {
+          case 'bomb':
+            isUnlocked = this.memories.bomb_found;
+            title = isUnlocked 
+              ? "ХРОНО-АНАЛИЗ: СВУ (БОМБА) ПОД СИДЕНЬЕМ №4"
+              : "ХРОНО-АНАЛИЗ: РЮКЗАК ПОД СИДЕНЬЕМ";
+            content = isUnlocked 
+              ? "<strong>Объект:</strong> Самодельное взрывное устройство под сиденьем №4.<br><br><strong>Состояние:</strong> Активно. Таймер синхронизирован с часами поезда. Пластиковый корпус содержит жидкий детонатор.<br><br><strong>Подсказка:</strong> В прошлых циклах вы выяснили, что обрезка красного или синего проводов ведет к мгновенной детонации. Обезвредить заряд можно только перекусив <strong>ЖЕЛТЫЙ ПРОВОД</strong>."
+              : "<strong>ОБЪЕКТ ЗАБЛОКИРОВАН</strong><br><br>Этот объект пока скрыт в тумане неведения. Попытайтесь исследовать вагон и дожить до критического момента, чтобы узнать больше.";
+            break;
+          case 'cabin':
+            isUnlocked = this.memories.cabin_code;
+            title = isUnlocked
+              ? "ХРОНО-АНАЛИЗ: КАБИНА МАШИНИСТА"
+              : "ХРОНО-АНАЛИЗ: ЗАКРЫТАЯ ДВЕРЬ В ТАМБУРЕ";
+            content = isUnlocked
+              ? "<strong>Объект:</strong> Герметичная дверь в головную кабину управления.<br><br><strong>Состояние:</strong> Заблокировано электронной кодовой панелью.<br><br><strong>Подсказка:</strong> На служебном планшете помощника машиниста вы обнаружили временный код доступа: <strong>8421</strong>. С помощью него можно мгновенно войти внутрь кабины, минуя механический взлом."
+              : "<strong>ОБЪЕКТ ЗАБЛОКИРОВАН</strong><br><br>Дверь заперта наглухо, электронная панель тускло светится красным. Нужен цифровой пароль из 4 знаков. Возможно, он записан где-то на служебных устройствах.";
+            break;
+          case 'shield':
+            isUnlocked = this.memories.generator_key;
+            title = isUnlocked
+              ? "ХРОНО-АНАЛИЗ: ВЫСОКОВОЛЬТНЫЙ ЩИТ"
+              : "ХРОНО-АНАЛИЗ: РАСПРЕДЕЛИТЕЛЬНЫЙ ШКАФ";
+            content = isUnlocked
+              ? "<strong>Объект:</strong> Высоковольтный силовой щит питания вагонов.<br><br><strong>Состояние:</strong> Закрыт трехгранным замком техобслуживания.<br><br><strong>Подсказка:</strong> Вы стащили универсальный трехгранный ключ у заснувшего монтера в Сцене 1. Теперь вы можете открыть распределительный щит и при необходимости полностью обесточить контактные кабели состава."
+              : "<strong>ОБЪЕКТ ЗАБЛОКИРОВАН</strong><br><br>Сервисный шкаф закрыт на специальный железнодорожный замок. Без инструмента попытка его открыть приведет лишь к поломке ногтей.";
+            break;
+          case 'terrorist':
+            isUnlocked = this.memories.terrorist_know;
+            title = isUnlocked
+              ? "ХРОНО-АНАЛИЗ: ЛИЧНОСТЬ ТЕРРОРИСТА"
+              : "ХРОНО-АНАЛИЗ: ПАССАЖИР В УГЛУ";
+            content = isUnlocked
+              ? "<strong>Объект:</strong> Молодой человек в темной спортивной куртке и глубоком капюшоне.<br><br><strong>Состояние:</strong> Крайне нервозное. Судорожно прижимает руку к правому карману, где находится беспроводной радио-детонатор.<br><br><strong>Подсказка:</strong> Это террорист, координирующий взрыв. Он собирается активировать детонатор вручную, если таймер даст сбой. Его необходимо нейтрализовать до того, как он нажмет кнопку."
+              : "<strong>ОБЪЕКТ ЗАБЛОКИРОВАН</strong><br><br>Обычный молодой парень, уткнувшийся в телефон. По крайней мере, на первый взгляд. Требуется внимательнее проследить за ним во 2-й сцене.";
+            break;
+          case 'soldier':
+            isUnlocked = this.memories.soldier_trust;
+            title = isUnlocked
+              ? "ХРОНО-АНАЛИЗ: МАЙОР ССО АЛЕКСЕЙ"
+              : "ХРОНО-АНАЛИЗ: МУЖЧИНА В КАМУФЛЯЖЕ";
+            content = isUnlocked
+              ? "<strong>Объект:</strong> Мужчина крепкого телосложения в камуфляжной куртке.<br><br><strong>Состояние:</strong> Спокоен, держит руки на коленях. На воротнике виден шеврон подразделения спецопераций ССО.<br><br><strong>Подсказка:</strong> В одном из циклов вы выяснили, что его зовут Алексей. Назвав его по имени и показав армейский жест приветствия, вы мгновенно завоюете его доверие и превратите в мощного союзника, способного обезвредить любого преступника."
+              : "<strong>ОБЪЕКТ ЗАБЛОКИРОВАН</strong><br><br>Крупный угрюмый мужчина едет молча, не реагируя на окружение. Заговорить с ним без веского повода — плохая затея.";
+            break;
+          case 'hatch':
+          case 'brake':
+            isUnlocked = this.memories.brake_broken;
+            title = isUnlocked
+              ? "ХРОНО-АНАЛИЗ: СЛОМАННАЯ ТОРМОЗНАЯ МАГИСТРАЛЬ"
+              : "ХРОНО-АНАЛИЗ: СЕРВИСНЫЙ ЛЮК В ПОЛУ";
+            content = isUnlocked
+              ? "<strong>Объект:</strong> Рукава пневматического тормоза в инспекционном люке.<br><br><strong>Состояние:</strong> Саботировано. Один из шлангов высокого давления надрезан террористом, из-за чего стоп-кран в вагоне бесполезен — воздух просто уходит из системы.<br><br><strong>Подсказка:</strong> Дергать стоп-кран в вагоне бесполезно. Нужно перекрыть аварийный вентиль магистрали непосредственно в люке или использовать ручной тормоз из кабины машиниста."
+              : "<strong>ОБЪЕКТ ЗАБЛОКИРОВАН</strong><br><br>Люк закрыт винтами. Стоп-кран под стеклом кажется надежным средством спасения, но так ли это? Нужно проверить.";
+            break;
+        }
+
+        header.textContent = title;
+        body.innerHTML = content;
+        modal.classList.add('active');
+        this.audio.playGlitch();
+      }
+
+      closeModal() {
+        document.getElementById('modal-overlay').classList.remove('active');
+      }
+
+      renderScene() {
+        const display = document.getElementById('story-display');
+        const choicesDiv = document.getElementById('choices-display');
+
+        display.innerHTML = "";
+        choicesDiv.innerHTML = "";
+
+        const textContent = this.getSceneText();
+        this.typewriterEffect(display, textContent);
+
+        const choices = this.getAvailableChoices();
+        
+        choices.forEach((choice, index) => {
+          const btn = document.createElement('button');
+          btn.className = `choice-btn ${choice.replaced ? 'replaced' : ''}`;
+          
+          const idxSpan = document.createElement('span');
+          idxSpan.className = 'choice-index';
+          idxSpan.textContent = `0${index + 1}`;
+          
+          const textNode = document.createTextNode(choice.text);
+          
+          btn.appendChild(idxSpan);
+          btn.appendChild(textNode);
+          
+          btn.onclick = () => {
+            if (this.state.isGameOver) return;
+            this.handleChoice(index);
+          };
+
+          choicesDiv.appendChild(btn);
+        });
+      }
+
+      typewriterEffect(element, text) {
+        if (this.typewriterTimeout) clearTimeout(this.typewriterTimeout);
+        element.innerHTML = "";
+        
+        let i = 0;
+        const words = text.split(" ");
+        
+        const nextWord = () => {
+          if (i < words.length) {
+            let word = words[i];
+            
+            if (Math.random() < 0.04 && word.length > 3) {
+              const originalWord = word;
+              word = `<span class="glitch-text">${word.replace(/[а-яА-Яe]/g, () => String.fromCharCode(33 + Math.floor(Math.random() * 30)))}</span>`;
+              this.audio.playGlitch();
+              setTimeout(() => {
+                const el = element.querySelector('.glitch-text');
+                if (el) {
+                  el.textContent = originalWord;
+                  el.className = "";
+                }
+              }, 120);
+            }
+
+            element.innerHTML += (i === 0 ? "" : " ") + word;
+            this.audio.playTextClick();
+            i++;
+            
+            let delay = 35;
+            const lastChar = word.slice(-1);
+            if (lastChar === '.' || lastChar === '!' || lastChar === '?') delay = 250;
+            else if (lastChar === ',') delay = 100;
+
+            this.typewriterTimeout = setTimeout(nextWord, delay);
+          }
+        };
+
+        nextWord();
+      }
+
+      getSceneText() {
+        if (this.state.currentScene === 1) {
+          let text = "Я еду в грохочущем вагоне метро состава типа 81-717 «Номерной». Поезд на полной скорости летит в перегоне между «Проспектом Хроноса» и «Октябрьской-Аномальной». Лампы дневного света под потолком тускло мигают, отбрасывая блеклые тени на лица попутчиков. \n\nВ ушах монотонно воет тяжелый индастриал в наушниках, но даже сквозь него я улавливаю странный, ритмичный скрежет откуда-то из-под пола. Вокруг меня обычная серая толпа: мужчина в деловом костюме судорожно прижимает к себе кожаный дипломат, девушка у дверей беззвучно плачет, вытирая тушь с глаз, а в углу дремлет парень в глубоком темном капюшоне. Напротив меня сидит крупный, угрюмый мужчина в камуфляже, безучастно глядящий перед собой.";
+          
+          if (this.memories.bomb_found) {
+            text += "\n\n<em>[Хроно-резонанс: В моих мыслях пульсирует четкое знание. Под сиденьем №4 заложен красный рюкзак с бомбой. Он ждет своего часа.]</em>";
+          }
+          if (this.memories.terrorist_know) {
+            text += "\n\n<em>[Хроно-резонанс: Парень в капюшоне — террорист. Под курткой у него взрывное устройство, а пальцы сжимают кнопку передатчика.]</em>";
+          }
+          if (this.memories.generator_key) {
+            text += "\n\n<em>[Хроно-резонанс: Я помню, что у спящего монтера в кармане лежит трехгранный ключ, которым можно вскрыть служебный щиток.]</em>";
+          }
+          return text;
+        }
+
+        if (this.state.currentScene === 2) {
+          const s1_choice = this.state.pathHistory[0];
+          
+          if (s1_choice === 0) {
+            // Ветка А
+            if (this.memories.bomb_found) {
+              return "Я резко пикирую под сиденье №4, заставляя сидящих рядом пассажиров вскрикнуть от испуга. Да! Вот он — тяжелый красный спортивный рюкзак. Молния полуоткрыта, изнутри доносится мерный, безжалостный электронный писк. Я аккуратно извлекаю его наружу. \n\nВ этот момент свет в вагоне полностью гаснет, оставляя нас в зловещем оранжевом мерцании аварийных ламп туннеля. Состав бросает из стороны в сторону, раздается визг тормозов. Толпа вокруг взрывается криками ужаса при виде бомбы в моих руках!";
+            } else {
+              return "Я закрываю глаза, поглубже натягиваю наушники и погружаюсь в музыку, пытаюсь отгородиться от липкого предчувствия тревоги. Внезапно сильнейший удар сбивает меня с сиденья на грязный пол. \n\nСвет полностью гаснет. Вагон погружается в кромешную тьму, озаряемую лишь редкими искрами из-под колес снаружи. Поезд резко кренится, скрежет сминаемого металла режет уши. Вокруг начинается дикая, слепая паника. Пассажиры топчут друг друга, пытаясь прорваться к выходам.";
+            }
+          }
+          
+          if (s1_choice === 1) {
+            // Ветка B
+            if (this.memories.terrorist_know) {
+              return "Я медленно, стараясь не привлекать внимания, поднимаюсь со своего места и делаю три шага к парню в капюшоне. За секунду до того, как он успевает поднять голову, я мертвой хваткой вцепляюсь в его правое запястье, выкручивая его руку в кармане! \n\nОн хрипит от боли и пытается вырваться. Мы сцепляемся в жесткой борьбе посреди летящего на огромной скорости состава. Вагон бросает на стрелках, мигает свет, пассажиры испуганно отшатываются в стороны, не понимая, что происходит.";
+            } else {
+              return "Я вытаскиваю наушники и внимательно оглядываю вагон, пытаясь прочитать лица попутчиков. Мужчина в костюме нервно стучит пальцами по дипломату, девушка у дверей утыкается в телефон, вздрагивая от слез. Парень в капюшоне сидит неподвижно, но его плечи напряжены. \n\nВдруг раздается громкий хлопок под полом, вагон сильно дергается. Парень в капюшоне резко вскакивает с места и бросается к тамбуру, держа руку глубоко в кармане куртки!";
+            }
+          }
+          
+          if (s1_choice === 2) {
+            // Ветка C
+            if (this.memories.generator_key) {
+              return "Я выхватываю трехгранный ключ, стащенный у монтера, подбегаю к служебному шкафу распределительного щита и резким движением отпираю стальную дверцу. Передо мной вспыхивают неоновые индикаторы реле питания и толстые медные шины высокого напряжения под напряжением 825 вольт. \n\nВ ту же секунду поезд начинает бешено вибрировать. По туннелю разносится пронзительный визг блокируемых колес. Из-за короткого замыкания под полом вагон заполняется запахом горелого пластика.";
+            } else {
+              return "Я срываю наушники, подбегаю к переговорному устройству «Пассажир-Машинист» и с силой вдавливаю кнопку вызова. В динамике раздается лишь оглушительный скрежет статики и далекий, нечеловеческий хрип. \n\nВнезапно поезд совершает резкий рывок, меня отбрасывает на стену вагона. Информационное табло над дверями тускнеет и гаснет, тормоза не реагируют, скорость состава стремительно растет.";
+            }
+          }
+        }
+
+        return "ОШИБКА ХРОНОЛОГИИ.";
+      }
+
+      getAvailableChoices() {
+        const choices = [];
+        const s1_choice = this.state.pathHistory[0];
+
+        if (this.state.currentScene === 1) {
+          // Выбор 1
+          if (this.memories.bomb_found) {
+            choices.push({ text: "Нырнуть под сиденье №4 и достать красный рюкзак с бомбой", replaced: true });
+          } else {
+            choices.push({ text: "Закрыть глаза и прибавить громкость в наушниках", replaced: false });
+          }
+
+          // Выбор 2
+          if (this.memories.terrorist_know) {
+            choices.push({ text: "Сблизиться с парнем в черном капюшоне и заблокировать его руку", replaced: true });
+          } else {
+            choices.push({ text: "Внимательно осмотреться и изучить попутчиков в вагоне", replaced: false });
+          }
+
+          // Выбор 3
+          if (this.memories.generator_key) {
+            choices.push({ text: "Вскрыть распределительный щит трехгранным ключом", replaced: true });
+          } else {
+            choices.push({ text: "Пробраться к переговорному устройству связи с машинистом", replaced: false });
+          }
+        } 
+        else if (this.state.currentScene === 2) {
+          if (s1_choice === 0) {
+            if (this.memories.bomb_found) {
+              choices.push({ text: "С бомбой в руках пробиться к торцевой двери", replaced: true });
+              choices.push({ text: "Остаться на месте и решить, что делать с зарядом", replaced: true });
+              choices.push({ text: "Вскрыть рюкзак и попытаться обезвредить бомбу", replaced: true });
+            } else {
+              choices.push({ text: "В панике бежать к торцевым дверям тамбура", replaced: false });
+              choices.push({ text: "Упасть на грязный пол, закрыв голову руками", replaced: false });
+              choices.push({ text: "Ползти на странный писк из-под сиденья №4", replaced: false });
+            }
+          } 
+          else if (s1_choice === 1) {
+            if (this.memories.terrorist_know) {
+              choices.push({ text: "Схватить парня в капюшоне за руку с детонатором", replaced: true });
+              choices.push({ text: "Попросить помощи у пассажиров вагона", replaced: true });
+              choices.push({ text: "Пытаться нейтрализовать террориста", replaced: true });
+            } else {
+              choices.push({ text: "Обвинить мужчину с кейсом и наброситься на него", replaced: false });
+              choices.push({ text: "Подойти к плачущей девушке", replaced: false });
+              choices.push({ text: "Дернуть ручку стоп-крана над дверями вагона", replaced: false });
+            }
+          } 
+          else if (s1_choice === 2) {
+            if (this.memories.generator_key) {
+              choices.push({ text: "Вырвать главный силовой кабель питания из щита", replaced: true });
+              choices.push({ text: "Спуститься в инспекционный люк тормозов", replaced: true });
+              choices.push({ text: "Подойти к двери кабины машиниста", replaced: true });
+            } else {
+              choices.push({ text: "Колошматить кулаками по переговорному устройству", replaced: false });
+              choices.push({ text: "Попытаться открыть люк техобслуживания в полу", replaced: false });
+              choices.push({ text: "Подойти к двери кабины машиниста", replaced: false });
+            }
+          }
+        }
+        else if (this.state.currentScene === 3) {
+          return this.getScene3Choices();
+        }
+
+        return choices;
+      }
+
+      getScene3Text() {
+        const i = this.state.pathHistory[0];
+        const j = this.state.pathHistory[1];
+
+        if (i === 0) {
+          if (j === 0) {
+            return this.memories.bomb_found
+              ? "Я прижимаю к груди тикающий рюкзак и добегаю до торцевой двери тамбура. Замок заклинен ржавчиной. Толпа в ужасе шарахается от бомбы в моих руках. Нужно действовать немедленно!"
+              : "Я добегаю до торцевой двери тамбура. Ржавый замок намертво заклинен. За мной напирает обезумевшая толпа. Сквозь грохот состава слышу нарастающий писк откуда-то из салона.";
+          }
+          if (j === 1) {
+            return this.memories.bomb_found
+              ? "Я стою посреди паникующего вагона, сжимая в руках тикающий рюкзак. Люди с криками разбегаются в стороны. Нужно срочно решать, что делать с зарядом."
+              : "Я падаю на холодный пол вагона. Надо мной топчутся обезумевшие люди. Сквозь грохот состава доносится странный мерный писк откуда-то совсем рядом, из-под сидений.";
+          }
+          if (j === 2) {
+            return this.memories.bomb_found
+              ? "Мои пальцы судорожно распарывают ткань рюкзака. Внутри — сплетение проводов и мигающий электронный таймер. Три провода уходят вглубь заряда: синий, красный и желтый. Какой из них безопасен?"
+              : "Я ползу между ног к сиденью №4, откуда доносится странный писк. Пальцы нащупывают холодную ткань тяжелого рюкзака. Молния полуоткрыта — внутри мерцает дисплей обратного отсчета и сплетение проводов. Синий, красный, желтый...";
+          }
+        }
+
+        if (i === 1) {
+          if (j === 0) {
+            return this.memories.terrorist_know
+              ? "Я мертвой хваткой вцепляюсь в запястье террориста в капюшоне. Его пальцы судорожно сжимают радио-пульт в кармане куртки. Он яростно вырывается, глаза горят злобой."
+              : "Я хватаю бизнесмена за лацканы пиджака. Он истошно кричит от ужаса, прижимая к себе кожаный дипломат. Наша потасовка привлекает внимание всего вагона.";
+          }
+          if (j === 1) {
+            return this.memories.terrorist_know
+              ? "Я оглядываю вагон в поисках союзника. Крупный мужчина в камуфляже внимательно следит за происходящим. Нужно действовать быстро и грамотно."
+              : "Я присаживаюсь рядом с плачущей девушкой. Она вздрагивает и смотрит на меня красными от слез глазами. В руках — сумочка, которую она судорожно прижимает к себе.";
+          }
+          if (j === 2) {
+            return this.memories.terrorist_know
+              ? "Я оцениваю расстояние до террориста. Один точный рывок — и можно выбить пульт из его рук. Но он начеку, его пальцы на кнопке. Нужен безупречный момент."
+              : "Я срываю защитный колпак и со всей силы дергаю рычаг стоп-крана. Раздается резкое шипение выходящего воздуха — но рукоятка бессильно провисает! Давление в магистрали на нуле.";
+          }
+        }
+
+        if (i === 2) {
+          if (j === 0) {
+            return this.memories.generator_key
+              ? "Щит распределения питания открыт. Передо мной — толстые медные шины под напряжением 825 вольт и главный рубильник. Индикаторы пульсируют тревожным красным светом."
+              : "Я бью кулаком по пластиковому корпусу переговорного устройства. Крышка трескается, обнажая жгуты проводов под напряжением.";
+          }
+          if (j === 1) {
+            return this.memories.generator_key
+              ? "Я отпираю инспекционный люк в полу трехгранным ключом. Крышка со скрежетом откидывается, обнажая переплетение пневматических шлангов тормозной магистрали в полумраке."
+              : "Я опускаюсь на колени перед люком техобслуживания в полу. Винты заржавели, крышка не поддается. Рядом на сиденье храпит монтер в спецовке — из его нагрудного кармана торчит блестящий металлический предмет.";
+          }
+          if (j === 2) {
+            return "Я подхожу к тяжелой стальной двери кабины машиниста. Массивный электромагнитный замок блокирует ручку. Сбоку тускло мигает цифровая панель кодового ввода. Нужно найти способ проникнуть внутрь.";
+          }
+        }
+
+        return "ОШИБКА ХРОНОЛОГИИ.";
+      }
+
+      getScene3Choices() {
+        const i = this.state.pathHistory[0];
+        const j = this.state.pathHistory[1];
+        const choices = [];
+
+        if (i === 0) {
+          if (j === 0) {
+            if (this.memories.bomb_found) {
+              choices.push({ text: "Протиснуться к двери, прижимая рюкзак к груди", replaced: false });
+              choices.push({ text: "Выбить стекло и выбросить тикающий рюкзак наружу", replaced: false });
+              choices.push({ text: "Оставить рюкзак у двери и отступить назад", replaced: false });
+            } else {
+              choices.push({ text: "Протиснуться к двери сквозь напирающую толпу", replaced: false });
+              choices.push({ text: "Выбить стекло торцевой двери и перебраться", replaced: false });
+              choices.push({ text: "Сдаться и упасть на колени в тамбуре", replaced: false });
+            }
+          }
+          if (j === 1) {
+            if (this.memories.bomb_found) {
+              choices.push({ text: "Прижать рюкзак к себе и замереть на месте", replaced: false });
+              choices.push({ text: "Положить рюкзак на пол и накрыть своим телом", replaced: false });
+              choices.push({ text: "Изо всех сил отшвырнуть рюкзак подальше", replaced: false });
+            } else {
+              choices.push({ text: "Закрыть глаза и натянуть наушники погромче", replaced: false });
+              choices.push({ text: "Проползти к источнику тиканья под сиденьем №4", replaced: false });
+              choices.push({ text: "Встать и нащупать рюкзак под сиденьем", replaced: false });
+            }
+          }
+          if (j === 2) {
+            choices.push({ text: "Перерезать синий провод", replaced: false });
+            choices.push({ text: "Перерезать красный провод", replaced: false });
+            choices.push({ text: "Перерезать желтый провод", replaced: false });
+          }
+        }
+
+        if (i === 1) {
+          if (j === 0) {
+            if (this.memories.terrorist_know) {
+              choices.push({ text: "Выкрутить кисть и забрать радио-пульт", replaced: false });
+              choices.push({ text: "Прижать террориста к полу и обезвредить", replaced: false });
+              choices.push({ text: "Сорвать капюшон и разоблачить перед всем вагоном", replaced: false });
+            } else {
+              choices.push({ text: "Вырвать дипломат из рук бизнесмена", replaced: false });
+              choices.push({ text: "Заорать «Террорист!» на весь вагон", replaced: false });
+              choices.push({ text: "Натравить на него толпу пассажиров", replaced: false });
+            }
+          }
+          if (j === 1) {
+            if (this.memories.terrorist_know) {
+              choices.push({ text: "Крикнуть, чтобы кто-нибудь вызвал полицию", replaced: false });
+              choices.push({ text: "Мягко попросить военного о помощи", replaced: false });
+              choices.push({ text: "Незаметно указать военному на террориста", replaced: false });
+            } else {
+              choices.push({ text: "Грубо выхватить сумочку из рук девушки", replaced: false });
+              choices.push({ text: "Мягко предложить помощь и протянуть платок", replaced: false });
+              choices.push({ text: "Незаметно заглянуть в приоткрытую сумочку", replaced: false });
+            }
+          }
+          if (j === 2) {
+            if (this.memories.terrorist_know) {
+              choices.push({ text: "Прыгнуть на террориста и ударить по руке", replaced: false });
+              choices.push({ text: "Схватить его за горло в удушающем приеме", replaced: false });
+              choices.push({ text: "Позвать военного: «Алексей, ССО, помоги!»", replaced: false });
+            } else {
+              choices.push({ text: "Дернуть стоп-кран еще сильнее, крича о саботаже", replaced: false });
+              choices.push({ text: "Броситься на парня в капюшоне", replaced: false });
+              choices.push({ text: "Позвать на помощь военного в камуфляже", replaced: false });
+            }
+          }
+        }
+
+        if (i === 2) {
+          if (j === 0) {
+            if (this.memories.generator_key) {
+              choices.push({ text: "Схватиться за оголенный кабель голыми руками", replaced: false });
+              choices.push({ text: "Осторожно изучить маркировки на панели щита", replaced: false });
+              choices.push({ text: "Дернуть главный рубильник изо всех сил", replaced: false });
+            } else {
+              choices.push({ text: "Сунуть руку внутрь и дернуть провода", replaced: false });
+              choices.push({ text: "Прислушаться к хрипу в динамике устройства", replaced: false });
+              choices.push({ text: "Заорать в микрофон изо всех сил", replaced: false });
+            }
+          }
+          if (j === 1) {
+            if (this.memories.generator_key) {
+              choices.push({ text: "Аккуратно осмотреть тормозную магистраль в люке", replaced: false });
+              choices.push({ text: "Последовательно проверить каждый шланг", replaced: false });
+              choices.push({ text: "Попробовать зажать поврежденный шланг руками", replaced: false });
+            } else {
+              choices.push({ text: "Попытаться оторвать крышку люка голыми руками", replaced: false });
+              choices.push({ text: "Тихо вытащить металлический предмет из кармана монтера", replaced: false });
+              choices.push({ text: "Продолжать дергать крышку люка изо всех сил", replaced: false });
+            }
+          }
+          if (j === 2) {
+            choices.push({ text: "Тихо осмотреть замок и вернуться к осмотру вагона", replaced: false });
+            choices.push({ text: "Найти огнетушитель и выбить дверь кабины", replaced: false });
+            choices.push({ text: "Попытаться подобрать код на цифровой панели", replaced: false });
+          }
+        }
+
+        return choices;
+      }
+
+      handleChoice(choiceIndex) {
+      this.state.pathHistory.push(choiceIndex);
+
+      if (this.state.currentScene === 1) {
+        this.state.currentScene = 2;
+        this.audio.playGlitch();
+        this.renderScene();
+      } 
+      else if (this.state.currentScene === 2) {
+        this.state.currentScene = 3;
+        this.audio.playGlitch();
+        this.renderScene();
+      }
+      else if (this.state.currentScene === 3) {
+        this.state.isGameOver = true;
+        this.showEnding();
+      }
+    }
+
+    showEnding() {
+      const i = this.state.pathHistory[0];
+      const j = this.state.pathHistory[1];
+      const k = this.state.pathHistory[2] !== undefined ? this.state.pathHistory[2] : 0;
+
+      const pathKey = `${i}-${j}-${k}`;
+      this.state.openedPaths.add(pathKey);
+
+      // Ключевой шаг: Проверка улик на основе ПУТИ
+      this.checkUnlocks(i, j, k);
+      this.saveProgress();
+
+      const endingText = this.getEndingText(i, j, k);
+
+      // Всегда останавливаем текущий интервал таймера при переходе на экран финала/события
+      if (this.timerInterval) clearInterval(this.timerInterval);
+
+      const display = document.getElementById('story-display');
+      const choicesDiv = document.getElementById('choices-display');
+      
+      display.innerHTML = "";
+      choicesDiv.innerHTML = "";
+
+      this.typewriterEffect(display, endingText);
+
+      const isTrueFin = (i === 2 && j === 2 && k === 2 && 
+                        this.memories.cabin_code && 
+                        this.memories.bomb_found && 
+                        this.memories.yellow_wire && 
+                        this.memories.brake_broken && 
+                        this.memories.soldier_trust &&
+                        this.memories.generator_key &&
+                        this.memories.terrorist_know);
+
+      const fatalEndings = new Set([
+        '0-0-0', '0-0-1', '0-0-2', '0-1-0', '0-1-1', '0-1-2', '0-2-0', '0-2-1', '0-2-2',
+        '1-0-0', '1-0-1', '1-0-2', '1-1-0', '1-2-0', '1-2-1', '1-2-2',
+        '2-0-0', '2-0-2', '2-1-2', '2-2-1', '2-2-2'
+      ]);
+
+      const isFatal = fatalEndings.has(pathKey);
+
+      const restartBtn = document.createElement('button');
+      if (isTrueFin) {
+        restartBtn.className = 'choice-btn replaced';
+        restartBtn.innerHTML = '<span class="choice-index" style="color: var(--neon-green); border-color: var(--neon-green);">FIN</span> ПЕТЛЯ ВРЕМЕНИ РАЗОРВАНА. ВЫЙТИ НА СВЕЖИЙ ВОЗДУХ';
+        restartBtn.onclick = () => {
+          alert("Поздравляем! Вы разорвали петлю энтропии и спасли пассажиров состава. Хроно-стабилизация завершена успешно.");
+          this.initiateChronoCollapse();
+        };
+      } else if (isFatal) {
+        restartBtn.className = 'choice-btn';
+        restartBtn.innerHTML = '<span class="choice-index" style="color: var(--neon-red); border-color: var(--neon-red);">RESTART</span> ИНИЦИИРОВАТЬ НОВЫЙ ВРЕМЕННОЙ ЦИКЛ';
+        restartBtn.onclick = () => {
+          this.triggerRestart("Инициализация квантового сдвига... Возврат к начальной хроно-точке.");
+        };
+      } else {
+        // НЕ-ФАТАЛЬНЫЙ исход: бесшовное возвращение к осмотру вагона с возобновлением таймера!
+        restartBtn.className = 'choice-btn replaced';
+        restartBtn.innerHTML = '<span class="choice-index" style="color: var(--neon-green); border-color: var(--neon-green);">CONTINUE</span> ВЕРНУТЬСЯ К ОСМОТРУ ВАГОНА';
+        restartBtn.onclick = () => {
+          this.state.currentScene = 1;
+          this.state.pathHistory = [];
+          this.state.isGameOver = false;
+          this.audio.playGlitch();
+
+          // Возобновляем таймер с оставшимся временем
+          const startTime = Date.now();
+          const initialRemaining = this.state.timeRemaining;
+
+          this.timerInterval = setInterval(() => {
+            if (this.state.isGameOver) {
+              clearInterval(this.timerInterval);
+              return;
+            }
+            const elapsed = Date.now() - startTime;
+            this.state.timeRemaining = Math.max(initialRemaining - elapsed, 0);
+
+            this.updateTimerDisplay();
+
+            if (this.state.timeRemaining <= 0) {
+              clearInterval(this.timerInterval);
+              this.handleTimeout();
+            }
+          }, 33);
+
+          this.renderScene();
+        };
+      }
+
+      choicesDiv.appendChild(restartBtn);
+      this.updateStats();
+      this.renderArchive();
+    }
+
+    // Строго логичный сбор улик! Только в соответствующих концовках!
+    checkUnlocks(i, j, k) {
+      // Улика 1: bomb_found (Красный рюкзак под сиденьем №4)
+      if (i === 0 && j === 1 && (k === 1 || k === 2)) {
+        this.unlockMemory('bomb_found');
+      }
+
+      // Улика 2: terrorist_know (Личность террориста)
+      if (i === 1 && j === 0 && k === 2) {
+        this.unlockMemory('terrorist_know');
+      }
+
+      // Улика 3: generator_key (Трехгранный ключ монтера)
+      if (i === 2 && j === 1 && (k === 0 || k === 1)) {
+        this.unlockMemory('generator_key');
+      }
+
+      // Улика 4: brake_broken (Саботаж тормозного шланга в люке)
+      if ((i === 1 && j === 2 && k === 0) || (i === 2 && j === 1 && k === 2 && this.memories.generator_key)) {
+        this.unlockMemory('brake_broken');
+      }
+
+      // Улика 5: cabin_code (Пароль от кабины машиниста 8421)
+      if ((i === 2 && j === 0 && k === 1) || (i === 2 && j === 2 && k === 1)) {
+        this.unlockMemory('cabin_code');
+      }
+
+      // Улика 6: soldier_trust (Доверие военного Алексея)
+      if (i === 1 && j === 2 && k === 2) {
+        this.unlockMemory('soldier_trust');
+      }
+
+      // Улика 7: yellow_wire (Желтый провод бомбы)
+      if (i === 0 && j === 2 && k === 2) {
+        this.unlockMemory('yellow_wire');
+      }
+    }
+
+    getEndingText(i, j, k) {
+      const key = `${i}-${j}-${k}`;
+
+      // Истинный Финал (2-2-2)
+      if (i === 2 && j === 2 && k === 2) {
+        const hasBombInfo = this.memories.bomb_found && this.memories.yellow_wire;
+        const hasBrakesInfo = this.memories.brake_broken;
+        const hasSoldierInfo = this.memories.soldier_trust;
+
+        if (!hasBombInfo) {
+          return "<strong>КОНЦОВКА №27: ТАЙНА МЕДНЫХ ЖИЛ (ПРОВАЛ)</strong>\n\nЯ пытаюсь проникнуть в кабину машиниста. Дверь поддается, я вбегаю внутрь — машинист лежит на полу без сознания, а рядом тяжелый красный рюкзак с тикающей бомбой. \n\nЯ срываю крышку устройства. Внутри мешанина из проводов. Я не знаю, какой из них резать! Синий? Красный? Желтый? Мои пальцы дрожат от ужаса. Я наугад дергаю синий провод... \n\n*Клик*. Таймер бомбы мгновенно детонирует. Ослепительная вспышка стирает меня из реальности. \n\n<em>[Подсказка: Необходимо сначала найти и исследовать рюкзак с бомбой на других ветках, чтобы узнать безопасный провод.]</em>";
+        }
+        if (!hasBrakesInfo) {
+          return "<strong>КОНЦОВКА №27: СКОРОСТЬ КАТАСТРОФЫ (ПРОВАЛ)</strong>\n\nЯ проникаю в кабину машиниста. Помня прошлый опыт, я аккуратно перекусываю желтый провод бомбы. Зловещее тиканье затихает! Бомба обезврежена. \n\nНо состав на бешеной скорости продолжает лететь сквозь темный туннель. Я судорожно тяну за рычаг экстренного тормоза. Рычаг бессильно провисает... Давления в системе нет! Тормозные шланги поезда повреждены. Поезд на полной скорости сходит с рельс и врезается в стену туннеля. \n\n<em>[Подсказка: Бомба обезврежена, но поезд разбился. Исследуйте тормозной люк или стоп-кран в других ветках.]</em>";
+        }
+        if (!hasSoldierInfo) {
+          return "<strong>КОНЦОВКА №27: ДИСТАНЦИОННЫЙ СДВИГ (ПРОВАЛ)</strong>\n\nЯ проникаю в кабину, обезвреживаю бомбу (желтый провод) и готовлюсь применить резервный пневматический тормоз. Но в этот момент в салоне террорист в черном капюшоне замечает мое отсутствие и понимает, что его план срывается. \n\nОн достает из кармана куртки радио-пульт и нажимает кнопку принудительной детонации. Радиосигнал доходит до бомбы в моих руках до того, как я успеваю срезать антенну. Происходит мгновенный взрыв. \n\n<em>[Подсказка: Террорист взорвал бомбу дистанционно. Вам необходим союзник, чтобы нейтрализовать его — найдите военного в других ветках.]</em>";
+        }
+        return "<strong>КОНЦОВКА №27: ИСТИННЫЙ РАССВЕТ (ПЕТЛЯ РАЗОРВАНА!)</strong>\n\nМои руки больше не дрожат. Я проникаю в кабину машиниста. Машинист без сознания, но я спокоен. Рядом с ним бомба в рюкзаке. Я аккуратно перекусываю желтый провод — тиканье затихает. Заряд обезврежен! \n\nЯ знаю, что террорист в салоне обезврежен майором Алексеем из ССО, которого я вовремя призвал на помощь. Также я знаю, что тормозной вентиль перекрыт. \n\nЯ активирую аварийный пневматический тормоз из кабины. Поезд оглашает протяжный свист сбрасываемого воздуха. Колеса со скрежетом вгрызаются в рельсы. Состав плавно замедляется и останавливается у залитой ярким утренним солнцем станции «Октябрьская-Аномальная».\n\nДвери открываются. Пассажиры целые и невредимые выходят на платформу. Я выхожу вслед за ними, вдыхая свежий воздух. Петля времени наконец разомкнулась. Я спасен.";
+      }
+
+      // Динамические варианты для ветки A (i=0) с bomb_found
+      if (i === 0 && this.memories.bomb_found) {
+        const vA = {
+          '0-0-0': "<strong>КОНЦОВКА №1: ДАВКА С БОМБОЙ</strong>\n\nЯ протискиваюсь к торцевой двери, прижимая к груди тикающий рюкзак. Толпа в ужасе шарахается. Но дверь заклинена! Обезумевшие люди напирают сзади. Бомба у моей груди издает нарастающий писк. Мои руки заняты — я не могу даже закрыть уши. Взрыв разрывает рюкзак и меня вместе с ним. \n\n<em>[Вы погибли с бомбой в руках у запертой двери.]</em>",
+          '0-0-1': "<strong>КОНЦОВКА №2: БОМБА НА ПУТЯХ</strong>\n\nЯ выбиваю стекло торцевой двери и с размаху вышвыриваю тикающий рюкзак наружу, в летящий мимо туннель! На секунду я чувствую облегчение. Но в этот момент состав резко бросает на стрелке, я теряю равновесие и лечу следом — прямо под колеса поезда. \n\n<em>[Вы выбросили бомбу, но сами сорвались под поезд.]</em>",
+          '0-0-2': "<strong>КОНЦОВКА №3: ЗАБЫТЫЙ РЮКЗАК</strong>\n\nЯ оставляю рюкзак у торцевой двери и отступаю назад в вагон. Тикающий звук удаляется. На секунду я надеюсь, что всё обойдется. Но детонатор срабатывает точно по таймеру. Взрывная волна проносится через весь вагон. \n\n<em>[Вы оставили бомбу, но взрыв всё равно настиг вас.]</em>",
+          '0-1-0': "<strong>КОНЦОВКА №4: ЖИВОЙ ЩИТ</strong>\n\nЯ прижимаю рюкзак к груди и замираю на месте, закрывая глаза. Если взрыв будет сильным, мое тело хотя бы примет на себя часть ударной волны. Пассажиры с криками разбегаются. Тиканье ускоряется. Последнее, что я слышу — оглушительный хлопок. \n\n<em>[Вы попытались стать щитом, но взрыв оказался слишком мощным.]</em>",
+          '0-1-1': "<strong>КОНЦОВКА №5: САМОПОЖЕРТВОВАНИЕ</strong>\n\nЯ кладу рюкзак на пол и ложусь на него сверху, всем телом накрывая заряд. Я знаю, что подо мной — бомба. Я знаю, что это может спасти других. Взрывная волна дробит мне ребра, отбрасывая на поручни. Но перед смертью я успеваю заметить, что часть пассажиров успела отбежать. \n\n<em>[Вы пожертвовали собой, накрыв бомбу. Ваше тело смягчило взрыв для некоторых пассажиров.]</em>",
+          '0-1-2': "<strong>КОНЦОВКА №6: ОТБРОШЕННАЯ СМЕРТЬ</strong>\n\nЯ изо всех сил швыряю рюкзак в сторону окон. Он летит через весь вагон, пассажиры с криками падают на пол. Но от сильного удара о стенку срабатывает высокочувствительный детонатор. Вспышка поглощает всё. \n\n<em>[Вы отшвырнули бомбу, но удар ускорил детонацию.]</em>"
+        };
+        if (vA[key]) return vA[key];
+        // 0-2-k: нарезание проводов — текст универсален
+      }
+
+      // Динамические варианты для ветки B (i=1) с terrorist_know
+      if (i === 1 && this.memories.terrorist_know) {
+        const vB = {
+          '1-0-0': "<strong>КОНЦОВКА №10: БОРЬБА ЗА ПУЛЬТ</strong>\n\nЯ выкручиваю кисть террориста, пытаясь забрать радио-пульт. Он яростно сопротивляется, мы сцепляемся в смертельной борьбе. Пульт выскальзывает из его кармана и откатывается по полу. Но террорист оказывается сильнее — он скидывает меня и бросается к пульту. Кнопка нажата. Взрыв. \n\n<em>[Вы знали врага в лицо, но проиграли в физической схватке.]</em>",
+          '1-0-1': "<strong>КОНЦОВКА №11: ЗАДЕРЖАНИЕ</strong>\n\nЯ прижимаю террориста к полу, заламывая ему руку. Он хрипит от боли, но пальцы его правой руки судорожно тянутся к карману с пультом. Я не успеваю его опередить — он нащупывает кнопку и нажимает ее. Взрыв разрывает вагон. \n\n<em>[Вы задержали террориста, но не смогли помешать ему нажать детонатор.]</em>",
+          '1-0-2': "<strong>КОНЦОВКА №12: РАЗОБЛАЧЕНИЕ</strong>\n\nЯ срываю капюшон с террориста и заорал на весь вагон: «Вот он! Это он заложил бомбу!». Лицо парня искажается от ярости и страха. Понимая, что его план рушится, он судорожно тянет руку к карману. Толпа бросается на него, но он успевает нажать кнопку. Взрывная волна сминает всех. \n\n<em>[Вы разоблачили террориста перед всем вагоном, но он успел активировать детонатор.]</em>",
+          '1-1-0': "<strong>КОНЦОВКА №13: ЛОЖНАЯ ТРЕВОГА</strong>\n\nЯ кричу, чтобы кто-нибудь вызвал полицию. Мой крик пугает пассажиров. Начинается паника, люди мечутся по вагону. Крупный мужчина принимает меня за зачинщика и бьет в челюсть. Падая, я вижу, как террорист в капюшоне ухмыляется. Взрыв стирает вагон. \n\n<em>[Ваша попытка позвать на помощь вызвала панику, которая сыграла на руку террористу.]</em>",
+          '1-1-1': "<strong>ТИХИЙ СОЮЗ: ПОМОЩЬ ВОЕННОГО (ТИХИЙ СТЕЛС)</strong>\n\nЯ аккуратно подхожу к военному в камуфляже и тихо, чтобы не привлекать внимания, шепчу: «Послушайте, мне нужна помощь. Тот парень в капюшоне — опасен». Военный внимательно смотрит на меня, оценивает ситуацию, затем едва заметно кивает.\n\nОн не спрашивает, откуда я знаю. Просто принимает как данность. Мы обмениваемся взглядами, и я понимаю — в нужный момент он будет готов действовать. Я тихо отхожу, продолжая осмотр вагона.\n\n<em>[Вы заручились молчаливой поддержкой военного. Осмотр продолжается!]</em>",
+          '1-1-2': "<strong>ТАЙНЫЙ СИГНАЛ: ГЛАЗА В ГЛАЗА (ТИХИЙ СТЕЛС)</strong>\n\nЯ незаметно подхожу к военному и, глядя ему прямо в глаза, едва заметно указываю взглядом на парня в капюшоне. Военный мгновенно считывает мой сигнал — взгляд профессионала. Он незаметно оценивает террориста, его руку в кармане, напряженные плечи.\n\nОн чуть наклоняет голову — сигнал принят. Я тихо отступаю в сторону, зная, что теперь за террористом наблюдает профессионал. Осмотр продолжается.\n\n<em>[Вы передали информацию военному без единого слова. Он начеку!]</em>",
+          '1-2-0': "<strong>КОНЦОВКА №16: ПРЯМАЯ АТАКА</strong>\n\nЯ прыгаю на террориста, ударяя по руке с детонатором. Пульт отлетает в сторону! Но террорист оказывается обученным бойцом — он наносит мне точный удар в горло. Задыхаясь, я вижу, как он подбирает пульт и жмет кнопку с холодной улыбкой. Взрыв. \n\n<em>[Вы выбили пульт, но террорист оказался опасным противником.]</em>",
+          '1-2-1': "<strong>КОНЦОВКА №17: УДУШАЮЩИЙ ПРИЕМ</strong>\n\nЯ хватаю террориста за горло в удушающем приеме. Он хрипит, глаза вылезают из орбит. Его руки беспорядочно молотят по воздуху. Но в агонии он нащупывает кнопку пульта в кармане и нажимает ее зубами, выгнув шею. Взрыв разрывает нас обоих. \n\n<em>[Вы почти задушили террориста, но он активировал детонатор в предсмертной судороге.]</em>",
+          '1-2-2': "<strong>КОНЦОВКА №18: СОВМЕСТНЫЙ ЗАХВАТ (ВОЕННЫЙ ДОВЕРЯЕТ!)</strong>\n\nЯ кричу: «Алексей, ССО! Террорист в капюшоне — прямо сейчас нажмет кнопку!». Военный мгновенно реагирует на имя — профессиональным приемом укладывает террориста лицом в пол и ломает ему руку. Пульт отлетает в сторону. Но мы не знаем, что делать с бомбой в рюкзаке. Перед взрывом Алексей кричит: *«Держись в следующей петле, если это реальный сдвиг!»* \n\n<em>[Вы нейтрализовали угрозу и открыли улику №6: Доверие Алексея! Но погибли при взрыве.]</em>"
+        };
+        if (vB[key]) return vB[key];
+      }
+
+      // Динамические варианты для ветки C (i=2) с generator_key
+      if (i === 2 && this.memories.generator_key) {
+        const vC = {
+          '2-0-0': "<strong>КОНЦОВКА №19: УДАР ТОКОМ (825В)</strong>\n\nЯ хватаюсь за оголенный кабель в распределительном щите. 825 вольт прожигают мое тело насквозь. Судорога сводит все мышцы. Последнее, что я вижу — неоновые индикаторы, гаснущие вместе с моим сознанием. \n\n<em>[Вы погибли от удара током из силового щита.]</em>",
+          '2-0-1': "<strong>ТИХИЙ ПЕРЕХВАТ: СЛУЖЕБНАЯ ИНФОРМАЦИЯ (ТИХИЙ СТЕЛС)</strong>\n\nЯ осторожно изучаю маркировки на панели щита. Среди технических надписей замечаю служебную записку, приклеенную скотчем к дверце: «Резервный код разблокировки кабины на сегодня — 8421. Не забудьте!».\n\nЯ аккуратно закрываю щит и тихо отхожу, запомнив пароль. Нужно действовать дальше.\n\n<em>[Вы успешно получили улику №5: Код кабины машиниста 8421! Осмотр продолжается!]</em>",
+          '2-0-2': "<strong>КОНЦОВКА №21: АВАРИЙНОЕ ОТКЛЮЧЕНИЕ</strong>\n\nЯ дергаю главный рубильник изо всех сил. Щит искрит, вагон погружается в полную темноту. Но аварийное отключение не останавливает поезд — инерция несет состав вперед. В темноте начинается паника. Бомба под сиденьем детонирует. \n\n<em>[Вы обесточили вагон, но это не остановило поезд и не обезвредило бомбу.]</em>",
+          '2-1-0': "<strong>ТИХАЯ РЕВИЗИЯ: ОСМОТР ТОРМОЗОВ (ТИХИЙ СТЕЛС)</strong>\n\nЯ аккуратно заглядываю в открытый люк и осматриваю переплетение пневматических шлангов. Всё выглядит исправным — никаких видимых повреждений. Шланги целы, давление в норме. Я тихо закрываю люк и возвращаюсь к осмотру вагона.\n\n<em>[Тормозная магистраль в люке выглядит исправной. Осмотр продолжается!]</em>",
+          '2-1-1': "<strong>ТИХАЯ ДИАГНОСТИКА: ПРОВЕРКА ШЛАНГОВ (ТИХИЙ СТЕЛС)</strong>\n\nЯ методично проверяю каждый шланг в люке по очереди. Все соединения плотные, утечек не видно. Тормозная система в этом узле работает штатно. Я бесшумно закрываю люк трехгранным ключом и возвращаюсь к осмотру.\n\n<em>[Все шланги в люке целы. Осмотр продолжается!]</em>"
+        };
+        if (vC[key]) return vC[key];
+      }
+
+      // Вариант 2-1-2 БЕЗ ключа (нельзя открыть люк)
+      if (i === 2 && j === 1 && k === 2 && !this.memories.generator_key) {
+        return "<strong>КОНЦОВКА №24: СОРВАННЫЕ ПАЛЬЦЫ</strong>\n\nЯ продолжаю дергать крышку люка изо всех сил. Пальцы сдираются в кровь, но винты не поддаются. В отчаянии я бью по крышке ногой — без толку. Пока я занимаюсь люком, тикающая бомба под сиденьем достигает нуля. Взрыв накрывает вагон. \n\n<em>[Вы потратили все время на бесполезную борьбу с люком. Нужен подходящий инструмент.]</em>";
+      }
+
+      // Статичные концовки (базовые, без первичной памяти)
+      const endings = {
+        '0-0-0': "<strong>КОНЦОВКА №1: ДАВКА ВО ТЬМЕ</strong>\n\nЯ поддаюсь всеобщей панике и бегу к межвагонной двери, расталкивая людей. Но дверь оказывается намертво заклинена заржавевшим замком. Обезумевшая толпа прижимает меня к холодному металлу. Я задыхаюсь от тяжести чужих тел. В этот момент сзади раздается чудовищный взрыв. Огненный вихрь выжигает кислород за секунду. Тьма. \n\n<em>[Вы погибли в панике. Вы не узнали ничего о причинах взрыва.]</em>",
+        '0-0-1': "<strong>КОНЦОВКА №2: ХОЛОДНАЯ СЦЕПКА</strong>\n\nПытаясь спастись от толпы, я выбиваю стекло торцевой двери и вылезаю на межвагонное пространство. Под ногами пролетают шпалы, ледяной ветер бьет в лицо. Состав резко бросает на стрелке. Мои пальцы соскальзывают, и я лечу под колеса грохочущего поезда. \n\n<em>[Вы сорвались под поезд, не успев собрать информацию.]</em>",
+        '0-0-2': "<strong>КОНЦОВКА №3: ОГНЕННЫЙ ШКВАЛ</strong>\n\nПоняв, что выхода нет, я опускаюсь на колени посреди тамбура, закрываю голову руками и начинаю молиться во тьму. Паникующие люди спотыкаются обо меня. Раздается оглушительный взрыв неизвестной природы. \n\n<em>[Вы погибли в тамбуре. Происхождение взрыва покрыто тайной.]</em>",
+        '0-1-0': "<strong>КОНЦОВКА №4: ПЕПЕЛ И МУЗЫКА</strong>\n\nЯ просто остаюсь сидеть на месте, поплотнее прижав наушники. Монотонный бит заглушает крики несчастных пассажиров. Я смотрю на мигающую оранжевую лампу аварийного освещения. Последний аккорд сливается со вспышкой взрыва. \n\n<em>[Вы проигнорировали реальность до самого конца. Информации нет.]</em>",
+        '0-1-1': "<strong>КОНЦОВКА №5: СЛЕПАЯ ЖЕРТВА (РЮКЗАК ОБНАРУЖЕН!)</strong>\n\nЯ падаю на пол около сиденья №4. В этот момент вагон содрогается, и я краем глаза замечаю под сиденьем тяжелый красный спортивный рюкзак. Сквозь полуоткрытую молнию пробивается оранжевый свет электронного таймера, отсчитывающего секунды. Я пытаюсь накрыть рюкзак своим телом... Взрывная волна дробит мои ребра, но перед смертью я точно узнал: бомба здесь! \n\n<em>[Вы погибли, но обнаружили улику №1: СВУ под сиденьем №4!]</em>",
+        '0-1-2': "<strong>КОНЦОВКА №6: ОСКОЛКИ СТЕКЛА (РЮКЗАК ОБНАРУЖЕН!)</strong>\n\nЯ нащупываю под сиденьем №4 тяжелый предмет. Это красный рюкзак с тикающим звуком! В панике я пытаюсь отпихнуть его ногой. Но от резкого удара срабатывает высокочувствительный детонатор бомбы. Вагон озаряется смертоносной багровой вспышкой. \n\n<em>[Вы погибли, но обнаружили улику №1: СВУ под сиденьем №4!]</em>",
+        '0-2-0': "<strong>КОНЦОВКА №7: ОШИБКА САПЕРА (СИНИЙ ПРОВОД)</strong>\n\nМои пальцы судорожно вскрывают рюкзак. Я вижу сплетение проводов. В панике я дергаю за синий провод. *Клик*. Таймер бомбы гаснет на долю секунды, а затем заряд мгновенно детонирует. Запоминаю: синий резать нельзя! \n\n<em>[Вы погибли, но исключили синий провод из возможных вариантов.]</em>",
+        '0-2-1': "<strong>КОНЦОВКА №8: КРАСНЫЙ ПУЛЬС</strong>\n\nЯ решаю перерезать красный провод. Перекусываю его. На дисплее бомбы загорается надпись: «CRITICAL ERROR», и цифры обратного отсчета начинают бежать со скоростью молнии. Я успеваю лишь вскрикнуть. Запоминаю: красный тоже смертелен! \n\n<em>[Вы погибли, но исключили красный провод из вариантов.]</em>",
+        '0-2-2': "<strong>КОНЦОВКА №9: ЖЕЛТАЯ НИТЬ (УЛИКА ОБНАРУЖЕНА!)</strong>\n\nЯ перекусываю желтый провод. Писк таймера бомбы затихает! Бомба полностью обезврежена. Я облегченно выдыхаю. Но внезапно состав резко дергается, раздается оглушительный скрежет ломающегося металла под полом. Саботированные тормоза не работают, поезд сходит с рельсов на полной скорости и врезается в стену. \n\n<em>[Вы обезвредили бомбу и нашли улику №7: Желтый провод! Но погибли в крушении.]</em>",
+        '1-0-0': "<strong>КОНЦОВКА №10: ОБВИНЕНИЕ НЕВИНОВНОГО</strong>\n\nЯ с криком нападаю на мужчину в строгом костюме, пытаясь вырвать у него кейс. Бизнесмен испуганно отбивается, дипломат с треском падает на пол. Наш шум привлекает всеобщее внимание. \n\nПарень в капюшоне в углу резко бледнеет и мгновенно достает из кармана куртки радио-детонатор. Огненный смерч разрывает вагон.\n\n<em>[Террорист запаниковал от шума и взорвал бомбу. Бизнесмен был невиновен.]</em>",
+        '1-0-1': "<strong>КОНЦОВКА №11: ДИПЛОМАТ РАЗДОРА</strong>\n\nЯ силой вырываю кейс из рук бизнесмена. Он истошно кричит на весь вагон: «Грабят! Помогите!». Пассажиры сбивают меня с ног. \n\nПарень в черном капюшоне пугается потасовки и нажимает кнопку на пульте. Взрыв испаряет вагон.\n\n<em>[Шумная потасовка спровоцировала террориста на досрочный взрыв.]</em>",
+        '1-0-2': "<strong>КОНЦОВКА №12: СУД ЛИНЧА (ТЕРРОРИСТ ОБНАРУЖЕН!)</strong>\n\nМои крики о том, что мужчина с кейсом — террорист, вызывают безумие у паникующих людей. Толпа набрасывается на несчастного бизнесмена. Пока идет избиение, я с ужасом замечаю, как парень в черном капюшоне в углу злорадно ухмыляется, достает из кармана радио-передатчик и зажимает красную кнопку. Раздается взрыв! \n\n<em>[Вы погибли, но обнаружили улику №2: Парень в капюшоне — террорист!]</em>",
+        '1-1-0': "<strong>КОНЦОВКА №13: ГНЕВ ТОЛПЫ</strong>\n\nЯ грубо выхватываю сумочку из рук плачущей девушки. Она отбивается. Пассажиры принимают меня за грабителя. Крупный мужчина наносит мне мощный удар в челюсть. Падая, я ударяюсь затылком о поручень. Взрыв стирает вагон. \n\n<em>[Вы напали на невинную девушку. Она не террористка.]</em>",
+        '1-1-1': "<strong>АКТ ДОВЕРИЯ: МИРНЫЙ РАЗГОВОР (ТИХИЙ СТЕЛС)</strong>\n\nЯ аккуратно присаживаюсь рядом с плачущей девушкой и тихо спрашиваю, могу ли я помочь, протягивая платок. Она успокаивается и рассказывает, что ее обидели дома и ей просто страшно.\n\nВзаимное доверие снижает тревогу в вагоне. Я аккуратно встаю, продолжая расследование.\n\n<em>[Вы проявили человечность и успокоили девушку. Осмотр продолжается!]</em>",
+        '1-1-2': "<strong>ТИХОЕ НАБЛЮДЕНИЕ: КАРМАННАЯ КРАЖА (ТИХИЙ СТЕЛС)</strong>\n\nЯ присаживаюсь к девушке, стараясь незаметно заглянуть в сумочку. Она замечает взгляд и отворачивается. Сквозь щель вижу лишь косметичку и ключи — ничего подозрительного. Она карманница, но к взрыву не имеет отношения.\n\n<em>[Девушка невиновна. Вы тихо отступили, продолжая осмотр!]</em>",
+        '1-2-0': "<strong>КОНЦОВКА №16: СОРВАННЫЙ ТОРМОЗ (САБОТАЖ ОБНАРУЖЕН!)</strong>\n\nЯ со всей силы дергаю стоп-кран. Раздается шипение, но рукоятка бессильно провисает. Давление в магистрали на нуле — тормоза саботированы! \n\nЭтот жест привлекает террориста. Он нажимает кнопку на пульте. Взрывная волна разрывает поезд.\n\n<em>[Стоп-кран бесполезен — тормоза саботированы! Вы обнаружили улику №4.]</em>",
+        '1-2-1': "<strong>КОНЦОВКА №17: СМЕРТЕЛЬНЫЙ КЛИНЧ</strong>\n\nЯ бросаюсь на парня в капюшоне, заваливая его на сиденье. Мы катимся по полу. Я пытаюсь выбить детонатор из его пальцев, но он успевает нажать кнопку зубами. Взрывное устройство срабатывает прямо под нами. \n\n<em>[Вы нейтрализовали подозреваемого слишком поздно. Он успел активировать бомбу.]</em>",
+        '1-2-2': "<strong>КОНЦОВКА №18: СОВМЕСТНЫЙ ШТУРМ (ВОЕННЫЙ ДОВЕРЯЕТ!)</strong>\n\nЯ кричу военному: «Помогите! Парень в капюшоне сейчас нажмет кнопку!». Мужчина мгновенно реагирует, профессиональным приемом укладывая подозреваемого лицом в пол. Но мы не знаем, что делать с бомбой. Перед взрывом военный кричит: *«Я майор Алексей из ССО, держись в следующей петле!»* \n\n<em>[Вы нейтрализовали угрозу и открыли улику №6: Доверие Алексея! Но погибли при взрыве.]</em>",
+        '2-0-0': "<strong>КОНЦОВКА №19: УДАР ТОКОМ (825В)</strong>\n\nЯ со всей силы бью кулаком по переговорному устройству. Корпус трескается, обнажая провода высокого напряжения. Разряд в 825 вольт проходит через мое сердце. \n\n<em>[Вы погибли от удара током.]</em>",
+        '2-0-1': "<strong>ТИХИЙ ПЕРЕХВАТ: ХРИП ИЗ ЭФИРА (ТИХИЙ СТЕЛС)</strong>\n\nЯ тихо прижимаюсь ухом к динамику. Сквозь треск статики прорывается хриплый шепот: «Я ранен... террорист напал... тормоза саботированы... код двери 8421...». Связь прерывается.\n\nПароль от кабины машиниста у меня! Нужно действовать дальше.\n\n<em>[Вы получили улику №5: Код кабины 8421! Осмотр продолжается!]</em>",
+        '2-0-2': "<strong>КОНЦОВКА №21: КРИК В ПУСТОТУ</strong>\n\nЯ беспрерывно ору в микрофон. Диспетчер пытается выяснить номер вагона, но время упущено. Бомба детонирует. \n\n<em>[Вы не успели получить информацию.]</em>",
+        '2-1-0': "<strong>ТИХИЙ ПОИСК: КЛЮЧ У МОНТЕРА (ТИХИЙ СТЕЛС)</strong>\n\nЯ пытаюсь вскрыть люк голыми руками. Крышка не поддается, я лишь сдираю пальцы. Но замечаю рядом спящего монтера.\n\nИз его кармана торчит трехгранный ключ. Аккуратно вытягиваю его. Ключ у меня!\n\n<em>[Вы нашли улику №3: Трехгранный ключ! Вернитесь к осмотру для применения.]</em>",
+        '2-1-1': "<strong>ТИХИЙ ПОИСК: СВЕРХТИХАЯ КРАЖА (ТИХИЙ СТЕЛС)</strong>\n\nЯ бесшумно подхожу к спящему монтеру. Аккуратно вытаскиваю из его кармана холодный трехгранный ключ. Монтер даже не шелохнулся.\n\n<em>[Вы получили улику №3: Трехгранный ключ! Осмотр продолжается!]</em>",
+        '2-1-2': "<strong>КОНЦОВКА №24: ВОЗДУШНЫЙ СДВИГ (САБОТАЖ ОБНАРУЖЕН!)</strong>\n\nЯ открываю люк ключом, вижу перебитый шланг и пытаюсь зажать дыру руками. Но давление в 8 атмосфер выбивает шланг, нанося смертельный удар. Тормоза повреждены! \n\n<em>[Вы погибли, но нашли улику №4: Саботаж тормозного шланга!]</em>",
+        '2-2-0': "<strong>ТИХАЯ РЕКОГНОСЦИРОВКА: ЗАПЕРТАЯ КАБИНА (ТИХИЙ СТЕЛС)</strong>\n\nЯ осматриваю дверь кабины. Электромагнитный замок, цифровая панель. Нужен код. Тихо отхожу, обдумывая, как его раздобыть.\n\n<em>[Кабина заперта. Нужна цифровая комбинация!]</em>",
+        '2-2-1': "<strong>КОНЦОВКА №26: ПРИЗРАК У РУЛЯ (КОД КАБИНЫ ОБНАРУЖЕН!)</strong>\n\nЯ выбиваю дверь огнетушителем. Машинист мертв. На панели — планшет с запиской: «Резервный код разблокировки кабины — 8421». Бомба взрывается. \n\n<em>[Вы погибли, но обнаружили улику №5: Код кабины 8421!]</em>"
+      };
+
+      return endings[key] || "<strong>НЕИЗВЕСТНАЯ ВРЕМЕННАЯ ЛИНИЯ</strong>";
+    }
+
+
+      triggerRestart(reasonMessage) {
+        this.audio.playExplosion();
+        
+        const flash = document.getElementById('glitch-flash');
+        const container = document.querySelector('.app-container');
+        
+        flash.style.opacity = '1';
+        container.classList.add('glitching');
+
+        setTimeout(() => {
+          flash.style.opacity = '0';
+        }, 150);
+
+        setTimeout(() => {
+          flash.style.opacity = '0.8';
+        }, 300);
+
+        setTimeout(() => {
+          flash.style.opacity = '0';
+          container.classList.remove('glitching');
+          
+          this.state.loop++;
+          this.startLoop();
+        }, 1200);
+      }
+
+      initiateChronoCollapse() {
+        if (confirm("Вы уверены, что хотите запустить ХРОНО-КОЛЛАПС? Все ваши воспоминания и собранные улики будут безвозвратно стерты!")) {
+          localStorage.clear();
+          this.memories = {
+            bomb_found: false,
+            terrorist_know: false,
+            generator_key: false,
+            brake_broken: false,
+            cabin_code: false,
+            soldier_trust: false,
+            yellow_wire: false
+          };
+          this.state.loop = 1;
+          this.state.openedPaths.clear();
+          this.state.entropy = 0.0;
+          this.saveProgress();
+          this.audio.playGlitch();
+          this.startLoop();
+          this.renderArchive();
+        }
+      }
+
+      renderArchive() {
+        const display = document.getElementById('archive-display');
+        display.innerHTML = "";
+
+        const archiveItems = [
+          { key: 'bomb_found', title: "01: СВУ под сиденьем №4" },
+          { key: 'terrorist_know', title: "02: Личность террориста" },
+          { key: 'generator_key', title: "03: Трехгранный ключ" },
+          { key: 'brake_broken', title: "04: Саботаж тормозов" },
+          { key: 'cabin_code', title: "05: Код кабины: 8421" },
+          { key: 'soldier_trust', title: "06: Доверие Алексея" },
+          { key: 'yellow_wire', title: "07: Желтый провод бомбы" }
+        ];
+
+        archiveItems.forEach(item => {
+          const card = document.createElement('div');
+          const isUnlocked = this.memories[item.key];
+          
+          if (isUnlocked) {
+            card.className = "memory-card unlocked";
+            card.innerHTML = `
+              <div class="memory-title">${item.title}</div>
+              <div class="memory-desc">${this.memoryMeta[item.key].desc}</div>
+            `;
+          } else {
+            card.className = "memory-card locked";
+            card.innerHTML = `
+              <div class="memory-title" style="color: var(--text-muted);">${item.title.split(":")[0]}: [ДАННЫЕ ЗАБЛОКИРОВАНЫ]</div>
+              <div class="memory-desc">Исследуйте временные линии, чтобы восстановить этот файл памяти.</div>
+            `;
+          }
+
+          display.appendChild(card);
+        });
+      }
+
+      toggleTestPanel() {
+        const panel = document.getElementById('test-panel');
+        if (panel.style.display === 'flex') {
+          panel.style.display = 'none';
+        } else {
+          panel.style.display = 'flex';
+        }
+      }
+
+      async runAllPathsTest() {
+        const log = document.getElementById('test-log');
+        const btn = document.getElementById('run-tests-btn');
+        log.innerHTML = "<strong>Инициализация авто-теста 27 путей (×2 режима памяти)...</strong><br>";
+        btn.disabled = true;
+        btn.textContent = "Тестирование...";
+
+        const backupMemories = JSON.stringify(this.memories);
+        const backupPaths = JSON.stringify(Array.from(this.state.openedPaths));
+        const backupLoop = this.state.loop;
+
+        let passedCount = 0;
+        let failedCount = 0;
+
+        const testPass = async (withMemories) => {
+          if (withMemories) {
+            for (let key in this.memories) { this.memories[key] = true; }
+          } else {
+            for (let key in this.memories) { this.memories[key] = false; }
+          }
+
+          const label = document.createElement('div');
+          label.style.color = withMemories ? 'var(--neon-green)' : 'var(--neon-cyan)';
+          label.style.marginTop = '8px';
+          label.textContent = withMemories ? '--- Все улики собраны ---' : '--- Без улик ---';
+          log.appendChild(label);
+
+          for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+              for (let k = 0; k < 3; k++) {
+                const pathStr = `${i}-${j}-${k}`;
+                const text = this.getEndingText(i, j, k);
+
+                const item = document.createElement('div');
+                item.className = 'test-log-item';
+
+                if (text && !text.includes("ОШИБКА") && !text.includes("НЕИЗВЕСТНАЯ")) {
+                  item.className += ' success';
+                  item.innerHTML = `<span>${withMemories ? '+' : '-'}[${pathStr}]</span> <span>OK</span>`;
+                  passedCount++;
+                } else {
+                  item.className += ' fail';
+                  item.innerHTML = `<span>${withMemories ? '+' : '-'}[${pathStr}]</span> <span>ОШИБКА</span>`;
+                  failedCount++;
+                }
+                log.appendChild(item);
+                log.scrollTop = log.scrollHeight;
+
+                await new Promise(r => setTimeout(r, 20));
+              }
+            }
+          }
+        };
+
+        await testPass(false);
+        await testPass(true);
+
+        this.memories = JSON.parse(backupMemories);
+        this.state.openedPaths = new Set(JSON.parse(backupPaths));
+        this.state.loop = backupLoop;
+        this.saveProgress();
+        this.updateStats();
+        this.renderArchive();
+
+        const summary = document.createElement('div');
+        summary.style.marginTop = '10px';
+        summary.style.fontWeight = 'bold';
+        summary.innerHTML = `<span style="color: var(--neon-green)">Успешно: ${passedCount}</span> / <span style="color: var(--neon-red)">Ошибок: ${failedCount}</span> <span style="color: var(--text-muted)">(из 54 проверок)</span>`;
+        log.appendChild(summary);
+
+        btn.disabled = false;
+        btn.textContent = "Запустить тест 27 путей";
+      }
+    }
+
+    const app = new ChronoMetro();
+
+    document.getElementById('sync-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      app.audio.init();
+      
+      const overlay = document.getElementById('sync-overlay');
+      overlay.style.pointerEvents = 'none'; // Блокируем клики сквозь оверлей
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 1000);
+
+      app.init();
+    });
+  </script>
+</body>
+</html>

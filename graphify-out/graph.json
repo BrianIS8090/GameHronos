@@ -1,0 +1,2529 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "audio.js",
+      "file_type": "code",
+      "source_file": "js/audio.js",
+      "source_location": "L1",
+      "id": "js_audio_js",
+      "community": 4,
+      "norm_label": "audio.js"
+    },
+    {
+      "label": "ChronoAudio",
+      "file_type": "code",
+      "source_file": "js/audio.js",
+      "source_location": "L2",
+      "id": "js_audio_chronoaudio",
+      "community": 4,
+      "norm_label": "chronoaudio"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "js/audio.js",
+      "source_location": "L3",
+      "id": "js_audio_chronoaudio_constructor",
+      "community": 4,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".init()",
+      "file_type": "code",
+      "source_file": "js/audio.js",
+      "source_location": "L12",
+      "id": "js_audio_chronoaudio_init",
+      "community": 4,
+      "norm_label": ".init()"
+    },
+    {
+      "label": ".startTrainRumble()",
+      "file_type": "code",
+      "source_file": "js/audio.js",
+      "source_location": "L24",
+      "id": "js_audio_chronoaudio_starttrainrumble",
+      "community": 4,
+      "norm_label": ".starttrainrumble()"
+    },
+    {
+      "label": ".playWheelClack()",
+      "file_type": "code",
+      "source_file": "js/audio.js",
+      "source_location": "L49",
+      "id": "js_audio_chronoaudio_playwheelclack",
+      "community": 4,
+      "norm_label": ".playwheelclack()"
+    },
+    {
+      "label": ".playTextClick()",
+      "file_type": "code",
+      "source_file": "js/audio.js",
+      "source_location": "L95",
+      "id": "js_audio_chronoaudio_playtextclick",
+      "community": 4,
+      "norm_label": ".playtextclick()"
+    },
+    {
+      "label": ".playGlitch()",
+      "file_type": "code",
+      "source_file": "js/audio.js",
+      "source_location": "L114",
+      "id": "js_audio_chronoaudio_playglitch",
+      "community": 4,
+      "norm_label": ".playglitch()"
+    },
+    {
+      "label": ".playExplosion()",
+      "file_type": "code",
+      "source_file": "js/audio.js",
+      "source_location": "L133",
+      "id": "js_audio_chronoaudio_playexplosion",
+      "community": 4,
+      "norm_label": ".playexplosion()"
+    },
+    {
+      "label": ".playTimerBeep()",
+      "file_type": "code",
+      "source_file": "js/audio.js",
+      "source_location": "L184",
+      "id": "js_audio_chronoaudio_playtimerbeep",
+      "community": 4,
+      "norm_label": ".playtimerbeep()"
+    },
+    {
+      "label": "game.js",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L1",
+      "id": "js_game_js",
+      "community": 3,
+      "norm_label": "game.js"
+    },
+    {
+      "label": "ChronoMetro",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L8",
+      "id": "js_game_chronometro",
+      "community": 1,
+      "norm_label": "chronometro"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L9",
+      "id": "js_game_chronometro_constructor",
+      "community": 1,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": "._getSceneText()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L27",
+      "id": "js_game_chronometro_getscenetext",
+      "community": 1,
+      "norm_label": "._getscenetext()"
+    },
+    {
+      "label": "._getChoices()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L31",
+      "id": "js_game_chronometro_getchoices",
+      "community": 1,
+      "norm_label": "._getchoices()"
+    },
+    {
+      "label": "._getScene3Text()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L35",
+      "id": "js_game_chronometro_getscene3text",
+      "community": 1,
+      "norm_label": "._getscene3text()"
+    },
+    {
+      "label": "._getScene3Choices()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L41",
+      "id": "js_game_chronometro_getscene3choices",
+      "community": 1,
+      "norm_label": "._getscene3choices()"
+    },
+    {
+      "label": "._getEndingText()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L47",
+      "id": "js_game_chronometro_getendingtext",
+      "community": 2,
+      "norm_label": "._getendingtext()"
+    },
+    {
+      "label": ".init()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L51",
+      "id": "js_game_chronometro_init",
+      "community": 2,
+      "norm_label": ".init()"
+    },
+    {
+      "label": ".loadProgress()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L58",
+      "id": "js_game_chronometro_loadprogress",
+      "community": 2,
+      "norm_label": ".loadprogress()"
+    },
+    {
+      "label": ".saveProgress()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L68",
+      "id": "js_game_chronometro_saveprogress",
+      "community": 2,
+      "norm_label": ".saveprogress()"
+    },
+    {
+      "label": ".calculateEntropy()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L74",
+      "id": "js_game_chronometro_calculateentropy",
+      "community": 2,
+      "norm_label": ".calculateentropy()"
+    },
+    {
+      "label": ".startLoop()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L78",
+      "id": "js_game_chronometro_startloop",
+      "community": 2,
+      "norm_label": ".startloop()"
+    },
+    {
+      "label": ".updateTimerDisplay()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L111",
+      "id": "js_game_chronometro_updatetimerdisplay",
+      "community": 1,
+      "norm_label": ".updatetimerdisplay()"
+    },
+    {
+      "label": ".handleTimeout()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L131",
+      "id": "js_game_chronometro_handletimeout",
+      "community": 1,
+      "norm_label": ".handletimeout()"
+    },
+    {
+      "label": ".updateStats()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L138",
+      "id": "js_game_chronometro_updatestats",
+      "community": 2,
+      "norm_label": ".updatestats()"
+    },
+    {
+      "label": ".updateInteractiveZones()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L145",
+      "id": "js_game_chronometro_updateinteractivezones",
+      "community": 2,
+      "norm_label": ".updateinteractivezones()"
+    },
+    {
+      "label": ".unlockMemory()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L164",
+      "id": "js_game_chronometro_unlockmemory",
+      "community": 2,
+      "norm_label": ".unlockmemory()"
+    },
+    {
+      "label": ".analyzeZone()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L185",
+      "id": "js_game_chronometro_analyzezone",
+      "community": 1,
+      "norm_label": ".analyzezone()"
+    },
+    {
+      "label": ".closeModal()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L199",
+      "id": "js_game_chronometro_closemodal",
+      "community": 1,
+      "norm_label": ".closemodal()"
+    },
+    {
+      "label": ".renderScene()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L203",
+      "id": "js_game_chronometro_renderscene",
+      "community": 1,
+      "norm_label": ".renderscene()"
+    },
+    {
+      "label": ".typewriterEffect()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L244",
+      "id": "js_game_chronometro_typewritereffect",
+      "community": 2,
+      "norm_label": ".typewritereffect()"
+    },
+    {
+      "label": ".handleChoice()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L284",
+      "id": "js_game_chronometro_handlechoice",
+      "community": 1,
+      "norm_label": ".handlechoice()"
+    },
+    {
+      "label": ".showEnding()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L310",
+      "id": "js_game_chronometro_showending",
+      "community": 2,
+      "norm_label": ".showending()"
+    },
+    {
+      "label": ".checkUnlocks()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L398",
+      "id": "js_game_chronometro_checkunlocks",
+      "community": 2,
+      "norm_label": ".checkunlocks()"
+    },
+    {
+      "label": "._generateCabinCode()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L429",
+      "id": "js_game_chronometro_generatecabincode",
+      "community": 2,
+      "norm_label": "._generatecabincode()"
+    },
+    {
+      "label": ".startKeypadGame()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L438",
+      "id": "js_game_chronometro_startkeypadgame",
+      "community": 1,
+      "norm_label": ".startkeypadgame()"
+    },
+    {
+      "label": "._renderKeypad()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L452",
+      "id": "js_game_chronometro_renderkeypad",
+      "community": 1,
+      "norm_label": "._renderkeypad()"
+    },
+    {
+      "label": "._keypadInput()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L548",
+      "id": "js_game_chronometro_keypadinput",
+      "community": 1,
+      "norm_label": "._keypadinput()"
+    },
+    {
+      "label": "._keypadBroken()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L559",
+      "id": "js_game_chronometro_keypadbroken",
+      "community": 1,
+      "norm_label": "._keypadbroken()"
+    },
+    {
+      "label": "._keypadClear()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L565",
+      "id": "js_game_chronometro_keypadclear",
+      "community": 1,
+      "norm_label": "._keypadclear()"
+    },
+    {
+      "label": "._keypadCancel()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L572",
+      "id": "js_game_chronometro_keypadcancel",
+      "community": 1,
+      "norm_label": "._keypadcancel()"
+    },
+    {
+      "label": "._updateKeypadSlots()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L581",
+      "id": "js_game_chronometro_updatekeypadslots",
+      "community": 1,
+      "norm_label": "._updatekeypadslots()"
+    },
+    {
+      "label": "._keypadSubmit()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L593",
+      "id": "js_game_chronometro_keypadsubmit",
+      "community": 1,
+      "norm_label": "._keypadsubmit()"
+    },
+    {
+      "label": "._addHistoryEntry()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L638",
+      "id": "js_game_chronometro_addhistoryentry",
+      "community": 1,
+      "norm_label": "._addhistoryentry()"
+    },
+    {
+      "label": "._keypadSuccess()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L655",
+      "id": "js_game_chronometro_keypadsuccess",
+      "community": 2,
+      "norm_label": "._keypadsuccess()"
+    },
+    {
+      "label": "._keypadFail()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L664",
+      "id": "js_game_chronometro_keypadfail",
+      "community": 1,
+      "norm_label": "._keypadfail()"
+    },
+    {
+      "label": ".triggerRestart()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L689",
+      "id": "js_game_chronometro_triggerrestart",
+      "community": 1,
+      "norm_label": ".triggerrestart()"
+    },
+    {
+      "label": ".initiateChronoCollapse()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L715",
+      "id": "js_game_chronometro_initiatechronocollapse",
+      "community": 2,
+      "norm_label": ".initiatechronocollapse()"
+    },
+    {
+      "label": ".renderArchive()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L729",
+      "id": "js_game_chronometro_renderarchive",
+      "community": 2,
+      "norm_label": ".renderarchive()"
+    },
+    {
+      "label": ".toggleTestPanel()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L765",
+      "id": "js_game_chronometro_toggletestpanel",
+      "community": 1,
+      "norm_label": ".toggletestpanel()"
+    },
+    {
+      "label": ".runAllPathsTest()",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L774",
+      "id": "js_game_chronometro_runallpathstest",
+      "community": 2,
+      "norm_label": ".runallpathstest()"
+    },
+    {
+      "label": "app",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L849",
+      "id": "js_game_app",
+      "community": 3,
+      "norm_label": "app"
+    },
+    {
+      "label": "overlay",
+      "file_type": "code",
+      "source_file": "js/game.js",
+      "source_location": "L856",
+      "id": "js_game_overlay",
+      "community": 3,
+      "norm_label": "overlay"
+    },
+    {
+      "label": "test-runner.mjs",
+      "file_type": "code",
+      "source_file": "js/test-runner.mjs",
+      "source_location": "L1",
+      "id": "js_test_runner_mjs",
+      "community": 3,
+      "norm_label": "test-runner.mjs"
+    },
+    {
+      "label": "failures",
+      "file_type": "code",
+      "source_file": "js/test-runner.mjs",
+      "source_location": "L5",
+      "id": "js_test_runner_failures",
+      "community": 3,
+      "norm_label": "failures"
+    },
+    {
+      "label": "runTests()",
+      "file_type": "code",
+      "source_file": "js/test-runner.mjs",
+      "source_location": "L7",
+      "id": "js_test_runner_runtests",
+      "community": 3,
+      "norm_label": "runtests()"
+    },
+    {
+      "label": "text-data.js",
+      "file_type": "code",
+      "source_file": "js/text-data.js",
+      "source_location": "L1",
+      "id": "js_text_data_js",
+      "community": 3,
+      "norm_label": "text-data.js"
+    },
+    {
+      "label": "getSceneText()",
+      "file_type": "code",
+      "source_file": "js/text-data.js",
+      "source_location": "L1",
+      "id": "js_text_data_getscenetext",
+      "community": 3,
+      "norm_label": "getscenetext()"
+    },
+    {
+      "label": "getAvailableChoices()",
+      "file_type": "code",
+      "source_file": "js/text-data.js",
+      "source_location": "L44",
+      "id": "js_text_data_getavailablechoices",
+      "community": 3,
+      "norm_label": "getavailablechoices()"
+    },
+    {
+      "label": "getScene3Text()",
+      "file_type": "code",
+      "source_file": "js/text-data.js",
+      "source_location": "L117",
+      "id": "js_text_data_getscene3text",
+      "community": 3,
+      "norm_label": "getscene3text()"
+    },
+    {
+      "label": "getScene3Choices()",
+      "file_type": "code",
+      "source_file": "js/text-data.js",
+      "source_location": "L181",
+      "id": "js_text_data_getscene3choices",
+      "community": 3,
+      "norm_label": "getscene3choices()"
+    },
+    {
+      "label": "getEndingText()",
+      "file_type": "code",
+      "source_file": "js/text-data.js",
+      "source_location": "L308",
+      "id": "js_text_data_getendingtext",
+      "community": 3,
+      "norm_label": "getendingtext()"
+    },
+    {
+      "label": "getZoneAnalysis()",
+      "file_type": "code",
+      "source_file": "js/text-data.js",
+      "source_location": "L419",
+      "id": "js_text_data_getzoneanalysis",
+      "community": 3,
+      "norm_label": "getzoneanalysis()"
+    },
+    {
+      "label": "MEMORY_META",
+      "file_type": "code",
+      "source_file": "js/text-data.js",
+      "source_location": "L521",
+      "id": "js_text_data_memory_meta",
+      "community": 3,
+      "norm_label": "memory_meta"
+    },
+    {
+      "label": "DEFAULT_MEMORIES",
+      "file_type": "code",
+      "source_file": "js/text-data.js",
+      "source_location": "L531",
+      "id": "js_text_data_default_memories",
+      "community": 3,
+      "norm_label": "default_memories"
+    },
+    {
+      "label": "FATAL_ENDINGS",
+      "file_type": "code",
+      "source_file": "js/text-data.js",
+      "source_location": "L541",
+      "id": "js_text_data_fatal_endings",
+      "community": 3,
+      "norm_label": "fatal_endings"
+    },
+    {
+      "label": "isFatalEnding()",
+      "file_type": "code",
+      "source_file": "js/text-data.js",
+      "source_location": "L553",
+      "id": "js_text_data_isfatalending",
+      "community": 3,
+      "norm_label": "isfatalending()"
+    },
+    {
+      "label": "narrative-map.md",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L1",
+      "id": "docs_narrative_map_md",
+      "community": 0,
+      "norm_label": "narrative-map.md"
+    },
+    {
+      "label": "\u0425\u0440\u043e\u043d\u043e-\u041c\u0435\u0442\u0440\u043e: \u041f\u0435\u0442\u043b\u044f \u042d\u043d\u0442\u0440\u043e\u043f\u0438\u0438 \u2014 \u041a\u0430\u0440\u0442\u0430 \u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L1",
+      "id": "docs_narrative_map_\u0445\u0440\u043e\u043d\u043e_\u043c\u0435\u0442\u0440\u043e_\u043f\u0435\u0442\u043b\u044f_\u044d\u043d\u0442\u0440\u043e\u043f\u0438\u0438_\u043a\u0430\u0440\u0442\u0430_\u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439",
+      "community": 0,
+      "norm_label": "\u0445\u0440\u043e\u043d\u043e-\u043c\u0435\u0442\u0440\u043e: \u043f\u0435\u0442\u043b\u044f \u044d\u043d\u0442\u0440\u043e\u043f\u0438\u0438 \u2014 \u043a\u0430\u0440\u0442\u0430 \u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0438\u0441\u0442\u0432\u0438\u0438"
+    },
+    {
+      "label": "1. \u041e\u0431\u0449\u0430\u044f \u0431\u043b\u043e\u043a-\u0441\u0445\u0435\u043c\u0430 \u043f\u043e\u0442\u043e\u043a\u0430",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L8",
+      "id": "docs_narrative_map_1_\u043e\u0431\u0449\u0430\u044f_\u0431\u043b\u043e\u043a_\u0441\u0445\u0435\u043c\u0430_\u043f\u043e\u0442\u043e\u043a\u0430",
+      "community": 0,
+      "norm_label": "1. \u043e\u0431\u0449\u0430\u044f \u0431\u043b\u043e\u043a-\u0441\u0445\u0435\u043c\u0430 \u043f\u043e\u0442\u043e\u043a\u0430"
+    },
+    {
+      "label": "code:mermaid (flowchart TD)",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L10",
+      "id": "docs_narrative_map_codeblock_1",
+      "community": 0,
+      "norm_label": "code:mermaid (flowchart td)"
+    },
+    {
+      "label": "\u0423\u0441\u043b\u043e\u0432\u0438\u0435 \u0438\u0441\u0442\u0438\u043d\u043d\u043e\u0439 \u043a\u043e\u043d\u0446\u043e\u0432\u043a\u0438 (\u043f\u0443\u0442\u044c 2-2-2)",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L46",
+      "id": "docs_narrative_map_\u0443\u0441\u043b\u043e\u0432\u0438\u0435_\u0438\u0441\u0442\u0438\u043d\u043d\u043e\u0439_\u043a\u043e\u043d\u0446\u043e\u0432\u043a\u0438_\u043f\u0443\u0442\u044c_2_2_2",
+      "community": 0,
+      "norm_label": "\u0443\u0441\u043b\u043e\u0432\u0438\u0435 \u0438\u0441\u0442\u0438\u043d\u043d\u043e\u0438 \u043a\u043e\u043d\u0446\u043e\u0432\u043a\u0438 (\u043f\u0443\u0442\u044c 2-2-2)"
+    },
+    {
+      "label": "code:mermaid (flowchart LR)",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L48",
+      "id": "docs_narrative_map_codeblock_2",
+      "community": 0,
+      "norm_label": "code:mermaid (flowchart lr)"
+    },
+    {
+      "label": "2. \u0414\u0435\u0440\u0435\u0432\u043e \u0432\u044b\u0431\u043e\u0440\u043e\u0432 \u2014 \u0432\u0441\u0435 27 \u043f\u0443\u0442\u0435\u0439",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L71",
+      "id": "docs_narrative_map_2_\u0434\u0435\u0440\u0435\u0432\u043e_\u0432\u044b\u0431\u043e\u0440\u043e\u0432_\u0432\u0441\u0435_27_\u043f\u0443\u0442\u0435\u0439",
+      "community": 5,
+      "norm_label": "2. \u0434\u0435\u0440\u0435\u0432\u043e \u0432\u044b\u0431\u043e\u0440\u043e\u0432 \u2014 \u0432\u0441\u0435 27 \u043f\u0443\u0442\u0435\u0438"
+    },
+    {
+      "label": "\u0412\u0435\u0442\u043a\u0438 \u0421\u0446\u0435\u043d\u044b 1",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L73",
+      "id": "docs_narrative_map_\u0432\u0435\u0442\u043a\u0438_\u0441\u0446\u0435\u043d\u044b_1",
+      "community": 5,
+      "norm_label": "\u0432\u0435\u0442\u043a\u0438 \u0441\u0446\u0435\u043d\u044b 1"
+    },
+    {
+      "label": "code:mermaid (flowchart LR)",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L75",
+      "id": "docs_narrative_map_codeblock_3",
+      "community": 5,
+      "norm_label": "code:mermaid (flowchart lr)"
+    },
+    {
+      "label": "\u041f\u043e\u043b\u043d\u0430\u044f \u0442\u0430\u0431\u043b\u0438\u0446\u0430 27 \u043a\u043e\u043d\u0446\u043e\u0432\u043e\u043a",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L97",
+      "id": "docs_narrative_map_\u043f\u043e\u043b\u043d\u0430\u044f_\u0442\u0430\u0431\u043b\u0438\u0446\u0430_27_\u043a\u043e\u043d\u0446\u043e\u0432\u043e\u043a",
+      "community": 5,
+      "norm_label": "\u043f\u043e\u043b\u043d\u0430\u044f \u0442\u0430\u0431\u043b\u0438\u0446\u0430 27 \u043a\u043e\u043d\u0446\u043e\u0432\u043e\u043a"
+    },
+    {
+      "label": "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L134",
+      "id": "docs_narrative_map_\u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430",
+      "community": 5,
+      "norm_label": "\u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430"
+    },
+    {
+      "label": "3. \u041a\u0430\u0440\u0442\u0430 \u0432\u043b\u0438\u044f\u043d\u0438\u044f \u0432\u043e\u0441\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0439",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L144",
+      "id": "docs_narrative_map_3_\u043a\u0430\u0440\u0442\u0430_\u0432\u043b\u0438\u044f\u043d\u0438\u044f_\u0432\u043e\u0441\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0439",
+      "community": 0,
+      "norm_label": "3. \u043a\u0430\u0440\u0442\u0430 \u0432\u043b\u0438\u044f\u043d\u0438\u044f \u0432\u043e\u0441\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0438"
+    },
+    {
+      "label": "code:mermaid (graph TD)",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L146",
+      "id": "docs_narrative_map_codeblock_4",
+      "community": 0,
+      "norm_label": "code:mermaid (graph td)"
+    },
+    {
+      "label": "\u0414\u0435\u0442\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f \u0432\u043b\u0438\u044f\u043d\u0438\u044f \u043f\u043e \u0441\u0446\u0435\u043d\u0430\u043c",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L215",
+      "id": "docs_narrative_map_\u0434\u0435\u0442\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f_\u0432\u043b\u0438\u044f\u043d\u0438\u044f_\u043f\u043e_\u0441\u0446\u0435\u043d\u0430\u043c",
+      "community": 0,
+      "norm_label": "\u0434\u0435\u0442\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f \u0432\u043b\u0438\u044f\u043d\u0438\u044f \u043f\u043e \u0441\u0446\u0435\u043d\u0430\u043c"
+    },
+    {
+      "label": "4. \u0422\u0430\u0431\u043b\u0438\u0446\u0430 \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u043e\u043a \u0443\u043b\u0438\u043a",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L229",
+      "id": "docs_narrative_map_4_\u0442\u0430\u0431\u043b\u0438\u0446\u0430_\u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u043e\u043a_\u0443\u043b\u0438\u043a",
+      "community": 0,
+      "norm_label": "4. \u0442\u0430\u0431\u043b\u0438\u0446\u0430 \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u043e\u043a \u0443\u043b\u0438\u043a"
+    },
+    {
+      "label": "code:mermaid (graph LR)",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L242",
+      "id": "docs_narrative_map_codeblock_5",
+      "community": 0,
+      "norm_label": "code:mermaid (graph lr)"
+    },
+    {
+      "label": "5. \u041e\u043f\u0442\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0439 \u043f\u043e\u0440\u044f\u0434\u043e\u043a \u0441\u0431\u043e\u0440\u0430 \u0443\u043b\u0438\u043a",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L265",
+      "id": "docs_narrative_map_5_\u043e\u043f\u0442\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0439_\u043f\u043e\u0440\u044f\u0434\u043e\u043a_\u0441\u0431\u043e\u0440\u0430_\u0443\u043b\u0438\u043a",
+      "community": 0,
+      "norm_label": "5. \u043e\u043f\u0442\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0438 \u043f\u043e\u0440\u044f\u0434\u043e\u043a \u0441\u0431\u043e\u0440\u0430 \u0443\u043b\u0438\u043a"
+    },
+    {
+      "label": "\u0410\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u044b\u0439 \u043f\u0443\u0442\u044c \u043a `brake_broken`",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L281",
+      "id": "docs_narrative_map_\u0430\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u044b\u0439_\u043f\u0443\u0442\u044c_\u043a_brake_broken",
+      "community": 0,
+      "norm_label": "\u0430\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u044b\u0438 \u043f\u0443\u0442\u044c \u043a `brake_broken`"
+    },
+    {
+      "label": "\u0410\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u044b\u0439 \u043f\u0443\u0442\u044c \u043a `cabin_code`",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L285",
+      "id": "docs_narrative_map_\u0430\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u044b\u0439_\u043f\u0443\u0442\u044c_\u043a_cabin_code",
+      "community": 0,
+      "norm_label": "\u0430\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u044b\u0438 \u043f\u0443\u0442\u044c \u043a `cabin_code`"
+    },
+    {
+      "label": "6. \u0410\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430 \u043c\u043e\u0434\u0443\u043b\u0435\u0439",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L291",
+      "id": "docs_narrative_map_6_\u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430_\u043c\u043e\u0434\u0443\u043b\u0435\u0439",
+      "community": 0,
+      "norm_label": "6. \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430 \u043c\u043e\u0434\u0443\u043b\u0435\u0438"
+    },
+    {
+      "label": "code:mermaid (graph TD)",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L293",
+      "id": "docs_narrative_map_codeblock_6",
+      "community": 0,
+      "norm_label": "code:mermaid (graph td)"
+    },
+    {
+      "label": "\u0421\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0444\u0430\u0439\u043b\u043e\u0432",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L348",
+      "id": "docs_narrative_map_\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430_\u0444\u0430\u0439\u043b\u043e\u0432",
+      "community": 0,
+      "norm_label": "\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0444\u0430\u0438\u043b\u043e\u0432"
+    },
+    {
+      "label": "code:block7 (Antigravity/)",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L350",
+      "id": "docs_narrative_map_codeblock_7",
+      "community": 0,
+      "norm_label": "code:block7 (antigravity/)"
+    },
+    {
+      "label": "7. \u041f\u0435\u0440\u0435\u043a\u0440\u0451\u0441\u0442\u043d\u044b\u0435 \u0441\u0441\u044b\u043b\u043a\u0438 \u043c\u0435\u0442\u043e\u0434\u043e\u0432",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L365",
+      "id": "docs_narrative_map_7_\u043f\u0435\u0440\u0435\u043a\u0440\u0451\u0441\u0442\u043d\u044b\u0435_\u0441\u0441\u044b\u043b\u043a\u0438_\u043c\u0435\u0442\u043e\u0434\u043e\u0432",
+      "community": 0,
+      "norm_label": "7. \u043f\u0435\u0440\u0435\u043a\u0440\u0435\u0441\u0442\u043d\u044b\u0435 \u0441\u0441\u044b\u043b\u043a\u0438 \u043c\u0435\u0442\u043e\u0434\u043e\u0432"
+    },
+    {
+      "label": "game.js \u2192 text-data.js",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L367",
+      "id": "docs_narrative_map_game_js_text_data_js",
+      "community": 0,
+      "norm_label": "game.js \u2192 text-data.js"
+    },
+    {
+      "label": "game.js \u2192 audio.js",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L381",
+      "id": "docs_narrative_map_game_js_audio_js",
+      "community": 0,
+      "norm_label": "game.js \u2192 audio.js"
+    },
+    {
+      "label": "\u0412\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 text-data.js",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L397",
+      "id": "docs_narrative_map_\u0432\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435_\u0434\u0430\u043d\u043d\u044b\u0435_text_data_js",
+      "community": 0,
+      "norm_label": "\u0432\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 text-data.js"
+    },
+    {
+      "label": "\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435: \u0414\u0438\u0430\u0433\u0440\u0430\u043c\u043c\u0430 SVG-\u0437\u043e\u043d \u0432\u0430\u0433\u043e\u043d\u0430",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L414",
+      "id": "docs_narrative_map_\u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435_\u0434\u0438\u0430\u0433\u0440\u0430\u043c\u043c\u0430_svg_\u0437\u043e\u043d_\u0432\u0430\u0433\u043e\u043d\u0430",
+      "community": 0,
+      "norm_label": "\u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435: \u0434\u0438\u0430\u0433\u0440\u0430\u043c\u043c\u0430 svg-\u0437\u043e\u043d \u0432\u0430\u0433\u043e\u043d\u0430"
+    },
+    {
+      "label": "code:mermaid (graph LR)",
+      "file_type": "document",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L416",
+      "id": "docs_narrative_map_codeblock_8",
+      "community": 0,
+      "norm_label": "code:mermaid (graph lr)"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/audio.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_audio_js",
+      "target": "js_audio_chronoaudio"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_audio_js"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/audio.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_audio_chronoaudio",
+      "target": "js_audio_chronoaudio_constructor"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/audio.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_audio_chronoaudio",
+      "target": "js_audio_chronoaudio_init"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/audio.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_audio_chronoaudio",
+      "target": "js_audio_chronoaudio_starttrainrumble"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/audio.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_audio_chronoaudio",
+      "target": "js_audio_chronoaudio_playwheelclack"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/audio.js",
+      "source_location": "L95",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_audio_chronoaudio",
+      "target": "js_audio_chronoaudio_playtextclick"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/audio.js",
+      "source_location": "L114",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_audio_chronoaudio",
+      "target": "js_audio_chronoaudio_playglitch"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/audio.js",
+      "source_location": "L133",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_audio_chronoaudio",
+      "target": "js_audio_chronoaudio_playexplosion"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/audio.js",
+      "source_location": "L184",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_audio_chronoaudio",
+      "target": "js_audio_chronoaudio_playtimerbeep"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_audio_chronoaudio"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/audio.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_audio_chronoaudio_init",
+      "target": "js_audio_chronoaudio_starttrainrumble"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_text_data_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_text_data_getscenetext"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_text_data_getavailablechoices"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_text_data_getscene3text"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_text_data_getscene3choices"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_text_data_getendingtext"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_text_data_getzoneanalysis"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_text_data_isfatalending"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_text_data_memory_meta"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_text_data_default_memories"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_game_chronometro"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L838",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_game_app"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L845",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_js",
+      "target": "js_game_overlay"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_constructor"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_getscenetext"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_getchoices"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_getscene3text"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_getscene3choices"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_getendingtext"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_init"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_loadprogress"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_saveprogress"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_calculateentropy"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L78",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_startloop"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L110",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_updatetimerdisplay"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L130",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_handletimeout"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L137",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_updatestats"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L144",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_updateinteractivezones"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L163",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_unlockmemory"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L184",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_analyzezone"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L198",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_closemodal"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L202",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_renderscene"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L238",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_typewritereffect"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L278",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_handlechoice"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L304",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_showending"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L387",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_checkunlocks"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L418",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_generatecabincode"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L427",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_startkeypadgame"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L441",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_renderkeypad"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L537",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_keypadinput"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L548",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_keypadbroken"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L554",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_keypadclear"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L561",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_keypadcancel"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L570",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_updatekeypadslots"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L582",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_keypadsubmit"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L627",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_addhistoryentry"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L644",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_keypadsuccess"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L653",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_keypadfail"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L678",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_triggerrestart"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L704",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_initiatechronocollapse"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L718",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_renderarchive"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L754",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_toggletestpanel"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L763",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro",
+      "target": "js_game_chronometro_runallpathstest"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L211",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_renderscene",
+      "target": "js_game_chronometro_getscenetext"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/game.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "js_game_chronometro_getscenetext",
+      "target": "js_text_data_getscenetext"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L214",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_renderscene",
+      "target": "js_game_chronometro_getchoices"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/game.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "js_game_chronometro_getchoices",
+      "target": "js_text_data_getavailablechoices"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L210",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_renderscene",
+      "target": "js_game_chronometro_getscene3text"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/game.js",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "js_game_chronometro_getscene3text",
+      "target": "js_text_data_getscene3text"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/game.js",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "js_game_chronometro_getscene3choices",
+      "target": "js_text_data_getscene3choices"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L312",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_showending",
+      "target": "js_game_chronometro_getendingtext"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/game.js",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "js_game_chronometro_getendingtext",
+      "target": "js_text_data_getendingtext"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_init",
+      "target": "js_game_chronometro_loadprogress"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_init",
+      "target": "js_game_chronometro_renderarchive"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_init",
+      "target": "js_game_chronometro_updatestats"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_init",
+      "target": "js_game_chronometro_startloop"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L65",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_loadprogress",
+      "target": "js_game_chronometro_calculateentropy"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L167",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_unlockmemory",
+      "target": "js_game_chronometro_saveprogress"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L316",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_showending",
+      "target": "js_game_chronometro_saveprogress"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L711",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_initiatechronocollapse",
+      "target": "js_game_chronometro_saveprogress"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L823",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_runallpathstest",
+      "target": "js_game_chronometro_saveprogress"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L139",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_updatestats",
+      "target": "js_game_chronometro_calculateentropy"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L83",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_startloop",
+      "target": "js_game_chronometro_generatecabincode"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_startloop",
+      "target": "js_game_chronometro_updatestats"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L86",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_startloop",
+      "target": "js_game_chronometro_updateinteractivezones"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_startloop",
+      "target": "js_game_chronometro_renderscene"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L713",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_initiatechronocollapse",
+      "target": "js_game_chronometro_startloop"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L132",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_handletimeout",
+      "target": "js_game_chronometro_triggerrestart"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L383",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_showending",
+      "target": "js_game_chronometro_updatestats"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L824",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_runallpathstest",
+      "target": "js_game_chronometro_updatestats"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L168",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_unlockmemory",
+      "target": "js_game_chronometro_updateinteractivezones"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L169",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_unlockmemory",
+      "target": "js_game_chronometro_renderarchive"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L389",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_checkunlocks",
+      "target": "js_game_chronometro_unlockmemory"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/game.js",
+      "source_location": "L185",
+      "weight": 1.0,
+      "source": "js_game_chronometro_analyzezone",
+      "target": "js_text_data_getzoneanalysis"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L212",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_renderscene",
+      "target": "js_game_chronometro_typewritereffect"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L284",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_handlechoice",
+      "target": "js_game_chronometro_renderscene"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L567",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_keypadcancel",
+      "target": "js_game_chronometro_renderscene"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L326",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_showending",
+      "target": "js_game_chronometro_typewritereffect"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L296",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_handlechoice",
+      "target": "js_game_chronometro_startkeypadgame"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L299",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_handlechoice",
+      "target": "js_game_chronometro_showending"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L315",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_showending",
+      "target": "js_game_chronometro_checkunlocks"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L384",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_showending",
+      "target": "js_game_chronometro_renderarchive"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L650",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_keypadsuccess",
+      "target": "js_game_chronometro_showending"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/game.js",
+      "source_location": "L334",
+      "weight": 1.0,
+      "source": "js_game_chronometro_showending",
+      "target": "js_text_data_isfatalending"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L438",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_startkeypadgame",
+      "target": "js_game_chronometro_renderkeypad"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L544",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_keypadinput",
+      "target": "js_game_chronometro_updatekeypadslots"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L558",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_keypadclear",
+      "target": "js_game_chronometro_updatekeypadslots"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L605",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_keypadsubmit",
+      "target": "js_game_chronometro_addhistoryentry"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L714",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_initiatechronocollapse",
+      "target": "js_game_chronometro_renderarchive"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/game.js",
+      "source_location": "L825",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_game_chronometro_runallpathstest",
+      "target": "js_game_chronometro_renderarchive"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/test-runner.mjs",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_test_runner_mjs",
+      "target": "js_text_data_js"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/test-runner.mjs",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_test_runner_mjs",
+      "target": "js_text_data_getendingtext"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "js/test-runner.mjs",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_test_runner_mjs",
+      "target": "js_text_data_default_memories"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/test-runner.mjs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_test_runner_mjs",
+      "target": "js_test_runner_failures"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/test-runner.mjs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_test_runner_mjs",
+      "target": "js_test_runner_runtests"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "js/test-runner.mjs",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "js_test_runner_runtests",
+      "target": "js_text_data_getendingtext"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-data.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_text_data_js",
+      "target": "js_text_data_getscenetext"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-data.js",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_text_data_js",
+      "target": "js_text_data_getavailablechoices"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-data.js",
+      "source_location": "L115",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_text_data_js",
+      "target": "js_text_data_getscene3text"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-data.js",
+      "source_location": "L179",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_text_data_js",
+      "target": "js_text_data_getscene3choices"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-data.js",
+      "source_location": "L306",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_text_data_js",
+      "target": "js_text_data_getendingtext"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-data.js",
+      "source_location": "L414",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_text_data_js",
+      "target": "js_text_data_getzoneanalysis"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-data.js",
+      "source_location": "L516",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_text_data_js",
+      "target": "js_text_data_memory_meta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-data.js",
+      "source_location": "L526",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_text_data_js",
+      "target": "js_text_data_default_memories"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-data.js",
+      "source_location": "L536",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_text_data_js",
+      "target": "js_text_data_fatal_endings"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-data.js",
+      "source_location": "L548",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_text_data_js",
+      "target": "js_text_data_isfatalending"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-data.js",
+      "source_location": "L109",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_text_data_getavailablechoices",
+      "target": "js_text_data_getscene3choices"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-data.js",
+      "source_location": "L549",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "js_text_data_isfatalending",
+      "target": "js_text_data_getendingtext"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_md",
+      "target": "docs_narrative_map_\u0445\u0440\u043e\u043d\u043e_\u043c\u0435\u0442\u0440\u043e_\u043f\u0435\u0442\u043b\u044f_\u044d\u043d\u0442\u0440\u043e\u043f\u0438\u0438_\u043a\u0430\u0440\u0442\u0430_\u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_\u0445\u0440\u043e\u043d\u043e_\u043c\u0435\u0442\u0440\u043e_\u043f\u0435\u0442\u043b\u044f_\u044d\u043d\u0442\u0440\u043e\u043f\u0438\u0438_\u043a\u0430\u0440\u0442\u0430_\u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439",
+      "target": "docs_narrative_map_1_\u043e\u0431\u0449\u0430\u044f_\u0431\u043b\u043e\u043a_\u0441\u0445\u0435\u043c\u0430_\u043f\u043e\u0442\u043e\u043a\u0430"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L71",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_\u0445\u0440\u043e\u043d\u043e_\u043c\u0435\u0442\u0440\u043e_\u043f\u0435\u0442\u043b\u044f_\u044d\u043d\u0442\u0440\u043e\u043f\u0438\u0438_\u043a\u0430\u0440\u0442\u0430_\u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439",
+      "target": "docs_narrative_map_2_\u0434\u0435\u0440\u0435\u0432\u043e_\u0432\u044b\u0431\u043e\u0440\u043e\u0432_\u0432\u0441\u0435_27_\u043f\u0443\u0442\u0435\u0439"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L144",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_\u0445\u0440\u043e\u043d\u043e_\u043c\u0435\u0442\u0440\u043e_\u043f\u0435\u0442\u043b\u044f_\u044d\u043d\u0442\u0440\u043e\u043f\u0438\u0438_\u043a\u0430\u0440\u0442\u0430_\u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439",
+      "target": "docs_narrative_map_3_\u043a\u0430\u0440\u0442\u0430_\u0432\u043b\u0438\u044f\u043d\u0438\u044f_\u0432\u043e\u0441\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0439"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L229",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_\u0445\u0440\u043e\u043d\u043e_\u043c\u0435\u0442\u0440\u043e_\u043f\u0435\u0442\u043b\u044f_\u044d\u043d\u0442\u0440\u043e\u043f\u0438\u0438_\u043a\u0430\u0440\u0442\u0430_\u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439",
+      "target": "docs_narrative_map_4_\u0442\u0430\u0431\u043b\u0438\u0446\u0430_\u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u043e\u043a_\u0443\u043b\u0438\u043a"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L265",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_\u0445\u0440\u043e\u043d\u043e_\u043c\u0435\u0442\u0440\u043e_\u043f\u0435\u0442\u043b\u044f_\u044d\u043d\u0442\u0440\u043e\u043f\u0438\u0438_\u043a\u0430\u0440\u0442\u0430_\u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439",
+      "target": "docs_narrative_map_5_\u043e\u043f\u0442\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0439_\u043f\u043e\u0440\u044f\u0434\u043e\u043a_\u0441\u0431\u043e\u0440\u0430_\u0443\u043b\u0438\u043a"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L291",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_\u0445\u0440\u043e\u043d\u043e_\u043c\u0435\u0442\u0440\u043e_\u043f\u0435\u0442\u043b\u044f_\u044d\u043d\u0442\u0440\u043e\u043f\u0438\u0438_\u043a\u0430\u0440\u0442\u0430_\u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439",
+      "target": "docs_narrative_map_6_\u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430_\u043c\u043e\u0434\u0443\u043b\u0435\u0439"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L365",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_\u0445\u0440\u043e\u043d\u043e_\u043c\u0435\u0442\u0440\u043e_\u043f\u0435\u0442\u043b\u044f_\u044d\u043d\u0442\u0440\u043e\u043f\u0438\u0438_\u043a\u0430\u0440\u0442\u0430_\u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439",
+      "target": "docs_narrative_map_7_\u043f\u0435\u0440\u0435\u043a\u0440\u0451\u0441\u0442\u043d\u044b\u0435_\u0441\u0441\u044b\u043b\u043a\u0438_\u043c\u0435\u0442\u043e\u0434\u043e\u0432"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L414",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_\u0445\u0440\u043e\u043d\u043e_\u043c\u0435\u0442\u0440\u043e_\u043f\u0435\u0442\u043b\u044f_\u044d\u043d\u0442\u0440\u043e\u043f\u0438\u0438_\u043a\u0430\u0440\u0442\u0430_\u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439",
+      "target": "docs_narrative_map_\u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435_\u0434\u0438\u0430\u0433\u0440\u0430\u043c\u043c\u0430_svg_\u0437\u043e\u043d_\u0432\u0430\u0433\u043e\u043d\u0430"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_1_\u043e\u0431\u0449\u0430\u044f_\u0431\u043b\u043e\u043a_\u0441\u0445\u0435\u043c\u0430_\u043f\u043e\u0442\u043e\u043a\u0430",
+      "target": "docs_narrative_map_codeblock_1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_1_\u043e\u0431\u0449\u0430\u044f_\u0431\u043b\u043e\u043a_\u0441\u0445\u0435\u043c\u0430_\u043f\u043e\u0442\u043e\u043a\u0430",
+      "target": "docs_narrative_map_\u0443\u0441\u043b\u043e\u0432\u0438\u0435_\u0438\u0441\u0442\u0438\u043d\u043d\u043e\u0439_\u043a\u043e\u043d\u0446\u043e\u0432\u043a\u0438_\u043f\u0443\u0442\u044c_2_2_2"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_\u0443\u0441\u043b\u043e\u0432\u0438\u0435_\u0438\u0441\u0442\u0438\u043d\u043d\u043e\u0439_\u043a\u043e\u043d\u0446\u043e\u0432\u043a\u0438_\u043f\u0443\u0442\u044c_2_2_2",
+      "target": "docs_narrative_map_codeblock_2"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_2_\u0434\u0435\u0440\u0435\u0432\u043e_\u0432\u044b\u0431\u043e\u0440\u043e\u0432_\u0432\u0441\u0435_27_\u043f\u0443\u0442\u0435\u0439",
+      "target": "docs_narrative_map_\u0432\u0435\u0442\u043a\u0438_\u0441\u0446\u0435\u043d\u044b_1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L97",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_2_\u0434\u0435\u0440\u0435\u0432\u043e_\u0432\u044b\u0431\u043e\u0440\u043e\u0432_\u0432\u0441\u0435_27_\u043f\u0443\u0442\u0435\u0439",
+      "target": "docs_narrative_map_\u043f\u043e\u043b\u043d\u0430\u044f_\u0442\u0430\u0431\u043b\u0438\u0446\u0430_27_\u043a\u043e\u043d\u0446\u043e\u0432\u043e\u043a"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L134",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_2_\u0434\u0435\u0440\u0435\u0432\u043e_\u0432\u044b\u0431\u043e\u0440\u043e\u0432_\u0432\u0441\u0435_27_\u043f\u0443\u0442\u0435\u0439",
+      "target": "docs_narrative_map_\u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L75",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_\u0432\u0435\u0442\u043a\u0438_\u0441\u0446\u0435\u043d\u044b_1",
+      "target": "docs_narrative_map_codeblock_3"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L146",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_3_\u043a\u0430\u0440\u0442\u0430_\u0432\u043b\u0438\u044f\u043d\u0438\u044f_\u0432\u043e\u0441\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0439",
+      "target": "docs_narrative_map_codeblock_4"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L215",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_3_\u043a\u0430\u0440\u0442\u0430_\u0432\u043b\u0438\u044f\u043d\u0438\u044f_\u0432\u043e\u0441\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0439",
+      "target": "docs_narrative_map_\u0434\u0435\u0442\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f_\u0432\u043b\u0438\u044f\u043d\u0438\u044f_\u043f\u043e_\u0441\u0446\u0435\u043d\u0430\u043c"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L242",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_4_\u0442\u0430\u0431\u043b\u0438\u0446\u0430_\u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u043e\u043a_\u0443\u043b\u0438\u043a",
+      "target": "docs_narrative_map_codeblock_5"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L281",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_5_\u043e\u043f\u0442\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0439_\u043f\u043e\u0440\u044f\u0434\u043e\u043a_\u0441\u0431\u043e\u0440\u0430_\u0443\u043b\u0438\u043a",
+      "target": "docs_narrative_map_\u0430\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u044b\u0439_\u043f\u0443\u0442\u044c_\u043a_brake_broken"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L285",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_5_\u043e\u043f\u0442\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0439_\u043f\u043e\u0440\u044f\u0434\u043e\u043a_\u0441\u0431\u043e\u0440\u0430_\u0443\u043b\u0438\u043a",
+      "target": "docs_narrative_map_\u0430\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u043d\u044b\u0439_\u043f\u0443\u0442\u044c_\u043a_cabin_code"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L293",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_6_\u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430_\u043c\u043e\u0434\u0443\u043b\u0435\u0439",
+      "target": "docs_narrative_map_codeblock_6"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L348",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_6_\u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430_\u043c\u043e\u0434\u0443\u043b\u0435\u0439",
+      "target": "docs_narrative_map_\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430_\u0444\u0430\u0439\u043b\u043e\u0432"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L350",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_\u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430_\u0444\u0430\u0439\u043b\u043e\u0432",
+      "target": "docs_narrative_map_codeblock_7"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L367",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_7_\u043f\u0435\u0440\u0435\u043a\u0440\u0451\u0441\u0442\u043d\u044b\u0435_\u0441\u0441\u044b\u043b\u043a\u0438_\u043c\u0435\u0442\u043e\u0434\u043e\u0432",
+      "target": "docs_narrative_map_game_js_text_data_js"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L381",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_7_\u043f\u0435\u0440\u0435\u043a\u0440\u0451\u0441\u0442\u043d\u044b\u0435_\u0441\u0441\u044b\u043b\u043a\u0438_\u043c\u0435\u0442\u043e\u0434\u043e\u0432",
+      "target": "docs_narrative_map_game_js_audio_js"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L397",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_7_\u043f\u0435\u0440\u0435\u043a\u0440\u0451\u0441\u0442\u043d\u044b\u0435_\u0441\u0441\u044b\u043b\u043a\u0438_\u043c\u0435\u0442\u043e\u0434\u043e\u0432",
+      "target": "docs_narrative_map_\u0432\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435_\u0434\u0430\u043d\u043d\u044b\u0435_text_data_js"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/narrative-map.md",
+      "source_location": "L416",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_narrative_map_\u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435_\u0434\u0438\u0430\u0433\u0440\u0430\u043c\u043c\u0430_svg_\u0437\u043e\u043d_\u0432\u0430\u0433\u043e\u043d\u0430",
+      "target": "docs_narrative_map_codeblock_8"
+    }
+  ],
+  "hyperedges": []
+}
